@@ -1,0 +1,58 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package action;
+
+import DAO.DAO;
+import controller.Action;
+import java.io.IOException;
+import java.sql.SQLException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import controller.Action;
+import model.Cliente;
+import java.io.IOException;
+import javax.servlet.http.*;
+import java.sql.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+
+/**
+ *
+ * @author Yukas
+ */
+public class GravarClienteAction implements Action {
+
+    public GravarClienteAction() {
+    }
+
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String nome = request.getParameter("txtNomeCliente");
+        String cpf = request.getParameter("txtCpfCliente");
+        String email = request.getParameter("txtEmailCliente");
+        String senha = request.getParameter("txtSenhaCliente");
+        String telefone = request.getParameter("txtTelefoneCliente");
+        String cep = request.getParameter("txtCepCliente");
+        String logradouro = request.getParameter("txtLogradouroCliente");
+        String bairro = request.getParameter("txtBairroCliente");
+        String numero = request.getParameter("txtNumeroCliente");
+        String complemento = request.getParameter("txtComplementoCliente");
+        String cidade = request.getParameter("txtCidadeCliente");
+        String estado = request.getParameter("txtEstadoCliente");
+        Long id = null;
+
+        Cliente cliente = new Cliente(nome, cpf, email, senha, telefone, cep, logradouro, bairro, numero,
+                complemento, cidade, estado);
+        try {
+            DAO.getInstance().salvar(cliente);
+            RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+            view.forward(request, response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+    }
+}
