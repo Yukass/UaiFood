@@ -10,6 +10,6 @@
         <li><a href="CadastroLoja.jsp">Registrar Loja</a> </li>
         <li><a href="CadastroCliente.jsp">Registrar Cliente</a> </li>
         <li><a href="LerCliente.jsp">Ler Cliente</a> </li>
-        <li><a href="LerLoja.jsp">Ler Loja</a> </li>
+        <li><a href="LerLoja.jsp">Ler Loja</a> </li>      
 </body>
 </html>
