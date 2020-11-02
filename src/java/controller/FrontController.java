@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controller;
 
 import DAO.DAO;
@@ -17,6 +22,10 @@ import java.sql.SQLException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+/**
+ *
+ * @author Yukas
+ */
 @WebServlet(name = "FrontController", urlPatterns = "/FrontController")
 public class FrontController extends HttpServlet {
 

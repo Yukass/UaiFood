@@ -1,3 +1,8 @@
+<%-- 
+    Document   : newjspindex
+    Created on : 01/11/2020, 22:39:33
+    Author     : Yukas
+--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

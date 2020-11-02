@@ -22,7 +22,7 @@ public class PersistenceUtil {
     
     public static EntityManager getEntityManager(){
         if(emf == null)
-            emf = Persistence.createEntityManagerFactory("uaifood");
+            emf = Persistence.createEntityManagerFactory("uaifoodpu");
         return emf.createEntityManager();
     }
     
