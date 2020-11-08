@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang='en'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Java Persistence API: XML Schemas</title>
+<style>
+    b {
+        color: #E40000;
+    }
+    
+    th {
+        background: #E40000;
+        color: white;
+    }
+    
+    table {
+        border-collapse: collapse;
+    }
+</style>
+<script src="https://www.oracle.com/asset/web/dtm/dtm-vendor.js" language="JavaScript"></script>
+<script type="text/javascript">
+var country_code='en'; //Add country code for translated version of the Footer.(eg:de)
+var footer_type = 'ocom';
+</script>
+
+  <script>(window.BOOMR_mq=window.BOOMR_mq||[]).push(["addVar",{"rua.upush":"false","rua.cpush":"false","rua.upre":"false","rua.cpre":"false","rua.uprl":"false","rua.cprl":"false","rua.cprf":"false","rua.trans":"","rua.cook":"false","rua.ims":"false","rua.ufprl":"false","rua.cfprl":"false"}]);</script>
+  <script>!function(e){var n="https://s.go-mpulse.net/boomerang/";if("False"=="True")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="DXNLE-YBWWY-AR74T-WMD99-77VRA",function(){function e(){if(!o){var e=document.createElement("script");e.id="boomr-scr-as",e.src=window.BOOMR.url,e.async=!0,i.parentNode.appendChild(e),o=!0}}function t(e){o=!0;var n,t,a,r,d=document,O=window;if(window.BOOMR.snippetMethod=e?"if":"i",t=function(e,n){var t=d.createElement("script");t.id=n||"boomr-if-as",t.src=window.BOOMR.url,BOOMR_lstart=(new Date).getTime(),e=e||d.body,e.appendChild(t)},!window.addEventListener&&window.attachEvent&&navigator.userAgent.match(/MSIE [67]\./))return window.BOOMR.snippetMethod="s",void t(i.parentNode,"boomr-async");a=document.createElement("IFRAME"),a.src="about:blank",a.title="",a.role="presentation",a.loading="eager",r=(a.frameElement||a).style,r.width=0,r.height=0,r.border=0,r.display="none",i.parentNode.appendChild(a);try{O=a.contentWindow,d=O.document.open()}catch(c){n=document.domain,a.src="javascript:var d=document.open();d.domain='"+n+"';void(0);",O=a.contentWindow,d=O.document.open()}if(n)d._boomrl=function(){this.domain=n,t()},d.write("<bo"+"dy onload='document._boomrl();'>");else if(O._boomrl=function(){t()},O.addEventListener)O.addEventListener("load",O._boomrl,!1);else if(O.attachEvent)O.attachEvent("onload",O._boomrl);d.close()}function a(e){window.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!window.BOOMR||!window.BOOMR.version&&!window.BOOMR.snippetExecuted){window.BOOMR=window.BOOMR||{},window.BOOMR.snippetStart=(new Date).getTime(),window.BOOMR.snippetExecuted=!0,window.BOOMR.snippetVersion=12,window.BOOMR.url=n+"DXNLE-YBWWY-AR74T-WMD99-77VRA";var i=document.currentScript||document.getElementsByTagName("script")[0],o=!1,r=document.createElement("link");if(r.relList&&"function"==typeof r.relList.supports&&r.relList.supports("preload")&&"as"in r)window.BOOMR.snippetMethod="p",r.href=window.BOOMR.url,r.rel="preload",r.as="script",r.addEventListener("load",e),r.addEventListener("error",function(){t(!0)}),setTimeout(function(){if(!o)t(!0)},3e3),BOOMR_lstart=(new Date).getTime(),i.parentNode.appendChild(r);else t(!1);if(window.addEventListener)window.addEventListener("load",a,!1);else if(window.attachEvent)window.attachEvent("onload",a)}}(),"".length>0)if(e&&"performance"in e&&e.performance&&"function"==typeof e.performance.setResourceTimingBufferSize)e.performance.setResourceTimingBufferSize();!function(){if(BOOMR=e.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var n=""=="true"?1:0,t="",a="x5s7ysqxaukpgx5ihucq-f-b6eb2c67b-clientnsv4-s.akamaihd.net",i={"ak.v":"29","ak.cp":"82485","ak.ai":parseInt("604074",10),"ak.ol":"0","ak.cr":1,"ak.ipv":4,"ak.proto":"http/1.1","ak.rid":"711574d","ak.r":34634,"ak.a2":n,"ak.m":"dscx","ak.n":"essl","ak.bpcip":"191.101.252.0","ak.cport":8625,"ak.gh":"104.77.168.63","ak.quicv":"","ak.tlsv":"UNKNOWN","ak.0rtt":"","ak.csrc":"-","ak.acc":"reno","ak.t":"1604861189","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==Q58d0Rpf16QQemraQ/MDpNzInP97L/bnUQfpYbbp2lkSzG3KGFmLdpoBe38zs8YkA0p86ZW7hvEEqyQR2vUzKCK7YifivZTOaa1Z4TbWkfoq8Pg2V4iZSGgU6fNbKhA1vW95gcJrJdMRr+zQpWajV2NHdKHxI0XpCAweBabBt0nFQh4s51f+P/21V1lDCBVr4MZBcOFNBIAvUduIpnIawSAHJW6nwtSORKaD8YoyAsAHBFMYVn6hJUj44TlkBoOFgYMWzXb2Ee2o+CfqM8phMBxp3GXjOoWEjasFSw4e0lC3S9InDSDBp8nxSI2IDPDwF3pFLWaTbCJ3TjakEiC7DGF1K5FcxpMrPoDSyregL2P4R0f/n/vzJOmiRdrTqWiCNWN+hNR0iFhqx0t72wsN75EKYjKsc9C9QYC2/XTQm2o=","ak.pv":"143","ak.dpoabenc":""};if(""!==t)i["ak.ruds"]=t;var o={i:!1,av:function(n){var t="http.initiator";if(n&&(!n[t]||"spa_hard"===n[t]))i["ak.feo"]=void 0!==e.aFeoApplied?1:0,BOOMR.addVar(i)},rv:function(){var e=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.r","ak.acc","ak.t"];BOOMR.removeVar(e)}};BOOMR.plugins.AK={akVars:i,akDNSPreFetchDomain:a,init:function(){if(!o.i){var e=BOOMR.subscribe;e("before_beacon",o.av,null,null),e("onbeacon",o.rv,null,null),o.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+<body>
+    <div id="titleSource" style="background-">
+        <IMG SRC="http://www.oracle.com/us/016091_en.gif">
+    </div>
+<a name="top"></a>
+
+<!-- BEGIN PAGETITLE -->
+<div class="smallpagetitle"><h1>Java Persistence API: XML Schemas</h1></div>
+<!-- END PAGETITLE -->
+<!-- ============ -->
+<!-- MAIN CONTENT -->
+<!-- ============ -->
+<div class="contentdivider"><hr /> </div>
+<div><b>Contents</b></div>
+<ul>
+<li><a href="#0">Introduction</a></li>
+<li><a href="#1">Using Java Persistence Schemas</a></li>
+<li><a href="#2.2">Java Persistence 2.2 Schema Resources</a></li>
+<li><a href="#2.1">Java Persistence 2.1 Schema Resources</a></li>
+<li><a href="#2.0">Java Persistence 2.0 Schema Resources</a></li>
+<li><a href="#1.0">Java Persistence 1.0 Schema Resources</a></li>
+</ul>
+<a name="0"></a>
+<div><b>Introduction</b></div>
+<div class="contentdivider"><hr /> </div>
+<p>
+This document lists the document formats that will be used by the
+Java Persistence API XML descriptors.  The Java Persistence API
+requires that its XML descriptors be validated with respect to the XML
+Schema listed by this document.
+</p>
+<a name="1"></a>
+<div><b>Using Java Persistence Schemas</b></div>
+<div class="contentdivider"><hr /> </div>
+<p>
+Starting with the 2.1 version,
+the Java Persistence API Schemas share the namespace,
+<code>http://xmlns.jcp.org/xml/ns/persistence/</code>.
+Previous versions used the namespace
+<code>http://java.sun.com/xml/ns/persistence/</code>. Each schema
+document contains a version attribute that contains the version of the
+Java Persistence specification. This pertains to the specific version
+of the specification as well as the schema document itself.
+</p>
+<p>
+Each Java Persistence XML Schema document's file name contains the
+specific version of the Java Persistence specification to which it
+relates. This is introduced for convenience to locate specific versions
+of the schema documents. However, XML descriptor instances are not
+required to refer to a specific file. Instead, an instance must specify
+the version of the specification by using the version attribute.  This
+allows XML descriptor processors to use the version information to
+choose the appropriate version of the schema document(s) to process XML
+descriptor instances.
+</p>
+<a name="2.2"></a>
+<div><b>Java Persistence 2.2 Schema Resources</b></div>
+<div class="contentdivider"><hr /> </div>
+<p>This table contains the XML Schema components for Java Persistence 2.2.</p>
+<p>
+<table width="100%" border="1" cellpadding="3">
+<tbody>
+<tr>
+<th><span class="body">Date Published</span></th>
+<th><span class="body">File Name</span></th>
+<th><span class="body">Description</span></th>
+<th><span class="body">Status</span></th>
+</tr>
+<tr>
+<td><span class="body">August 4, 2017</span></td>
+<td><span class="body"><a href="orm_2_2.xsd"><code>orm_2_2.xsd</code></a></span></td>
+<td><span class="body">Object/relational mapping file schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+<tr>
+<td><span class="body">August 4, 2017</span></td>
+<td><span class="body"><a href="persistence_2_2.xsd"><code>persistence_2_2.xsd</code></a></span></td>
+<td><span class="body">Persistence configuration schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+</table>
+</p>
+<br/>
+<br/>
+<a name="2.1"></a>
+<div><b>Java Persistence 2.1 Schema Resources</b></div>
+<div class="contentdivider"><hr /> </div>
+<p>This table contains the XML Schema components for Java Persistence 2.1.</p>
+<p>
+<table width="100%" border="1" cellpadding="3">
+<tbody>
+<tr>
+<th><span class="body">Date Published</span></th>
+<th><span class="body">File Name</span></th>
+<th><span class="body">Description</span></th>
+<th><span class="body">Status</span></th>
+</tr>
+<tr>
+<td><span class="body">April 22, 2013</span></td>
+<td><span class="body"><a href="orm_2_1.xsd"><code>orm_2_1.xsd</code></a></span></td>
+<td><span class="body">Object/relational mapping file schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+<tr>
+<td><span class="body">April 22, 2013</span></td>
+<td><span class="body"><a href="persistence_2_1.xsd"><code>persistence_2_1.xsd</code></a></span></td>
+<td><span class="body">Persistence configuration schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+</table>
+</p>
+<br/>
+<br/>
+<a name="2.0"></a>
+<div><b>Java Persistence 2.0 Schema Resources</b></div>
+<div class="contentdivider"><hr /> </div>
+<p>This table contains the XML Schema components for Java Persistence 2.0.</p>
+<p>
+<table width="100%" border="1" cellpadding="3">
+<tbody>
+<tr>
+<th><span class="body">Date Published</span></th>
+<th><span class="body">File Name</span></th>
+<th><span class="body">Description</span></th>
+<th><span class="body">Status</span></th>
+</tr>
+<tr>
+<td><span class="body">December 10, 2009</span></td>
+<td><span class="body"><a href="orm_2_0.xsd"><code>orm_2_0.xsd</code></a></span></td>
+<td><span class="body">Object/relational mapping file schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+<tr>
+<td><span class="body">December 10, 2009</span></td>
+<td><span class="body"><a href="persistence_2_0.xsd"><code>persistence_2_0.xsd</code></a></span></td>
+<td><span class="body">Persistence configuration schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+</table>
+</p>
+<br/>
+<br/>
+<a name="1.0"></a>
+<div><b>Java Persistence 1.0 Schema Resources</b></div>
+<div class="contentdivider"><hr /> </div>
+<p>This table contains the XML Schema components for Java Persistence 1.0.</p>
+<p>
+<table width="100%" border="1" cellpadding="3">
+<tbody>
+<tr>
+<th><span class="body">Date Published</span></th>
+<th><span class="body">File Name</span></th>
+<th><span class="body">Description</span></th>
+<th><span class="body">Status</span></th>
+</tr>
+<tr>
+<td><span class="body">May 11, 2006</span></td>
+<td><span class="body"><a href="orm_1_0.xsd"><code>orm_1_0.xsd</code></a></span></td>
+<td><span class="body">Object/relational mapping file schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+<tr>
+<td><span class="body">May 11, 2006</span></td>
+<td><span class="body"><a href="persistence_1_0.xsd"><code>persistence_1_0.xsd</code></a></span></td>
+<td><span class="body">Persistence configuration schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+</table>
+</p>
+<!-- =================== -->
+<!-- END OF MAIN CONTENT -->
+<!-- =================== -->
+</body>
+</html>
