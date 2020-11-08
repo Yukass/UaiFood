@@ -29,6 +29,21 @@ public class GravarLojaAction implements Action {
     }
 
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
+        String operacao  = request.getParameter("operacao");
+        
+        if(operacao.equals("abrirPagina")){
+              try {
+            RequestDispatcher view = request.getRequestDispatcher("CadastroLoja.jsp");
+            view.forward(request, response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+        }
+        else if(operacao.equals("cadastrar")){
+        
         String nome = request.getParameter("txtNomeLoja");
         String cnpj = request.getParameter("txtCnpjLoja");
         String email = request.getParameter("txtEmailLoja");
@@ -54,5 +69,6 @@ public class GravarLojaAction implements Action {
         } catch (ServletException e) {
             e.printStackTrace();
         }
+    }
     }
 }

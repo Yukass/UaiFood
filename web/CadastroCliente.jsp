@@ -14,7 +14,7 @@
     </head>
     <body>
              <h1>Cliente</h1>
-         <form action ="FrontController?action=GravarCliente&operacao=${operacao}" method = "post" name="ManterCliente" onsubmit=" return validacaoCliente()">
+         <form action ="FrontController?action=GravarCliente&operacao=cadastrar" method = "post" name="ManterCliente" onsubmit=" return validacaoCliente()">
             <table>
             <tr>
               

@@ -12,9 +12,9 @@
         <title>Index</title>
     </head>
     <body>
-        <li><a href="CadastroLoja.jsp">Registrar Loja</a> </li>
-        <li><a href="CadastroCliente.jsp">Registrar Cliente</a> </li>
-        <li><a href="LerCliente.jsp">Ler Cliente</a> </li>
-        <li><a href="LerLoja.jsp">Ler Loja</a> </li>      
+        <li><a href="FrontController?action=GravarLoja&operacao=abrirPagina">Registrar Loja</a> </li>
+        <li><a href="FrontController?action=GravarCliente&operacao=abrirPagina">Registrar Cliente</a> </li>
+        <li><a href="FrontController?action=LerCliente&operacao=abrirPagina">Ler Cliente</a> </li>
+        <li><a href="FrontController?action=LerLoja&operacao=abrirPagina">Ler Loja</a> </li>      
 </body>
 </html>

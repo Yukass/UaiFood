@@ -26,6 +26,20 @@ public class LerClienteAction implements Action{
     }
 
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
+         String operacao  = request.getParameter("operacao");
+        
+         if(operacao.equals("abrirPagina")){
+              try {
+            RequestDispatcher view = request.getRequestDispatcher("LerCliente.jsp");
+            view.forward(request, response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+        }else if(operacao.equals("lerCliente")){
+        
         try {
             Long idCliente = Long.parseLong(request.getParameter("txtIdCliente"));
             Cliente cliente = (Cliente) DAO.getInstance().getObjeto(idCliente, Class.forName("model.Cliente"));
@@ -39,5 +53,5 @@ public class LerClienteAction implements Action{
         }
                 
     }
-    
+    }
 }

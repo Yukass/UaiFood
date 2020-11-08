@@ -26,6 +26,20 @@ public class LerLojaAction implements Action{
     }
 
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
+        String operacao  = request.getParameter("operacao");
+        
+         if(operacao.equals("abrirPagina")){
+              try {
+            RequestDispatcher view = request.getRequestDispatcher("LerLoja.jsp");
+            view.forward(request, response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+        }else if(operacao.equals("lerLoja")){
+        
         try {
             Long idLoja = Long.parseLong(request.getParameter("txtIdLoja"));
             Loja loja = (Loja) DAO.getInstance().getObjeto(idLoja, Class.forName("model.Loja"));
@@ -37,7 +51,7 @@ public class LerLojaAction implements Action{
         } catch (ServletException ex) {
             Logger.getLogger(LerLojaAction.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        }
     }
 
 }

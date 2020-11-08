@@ -29,6 +29,21 @@ public class GravarClienteAction implements Action {
     }
 
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+          
+        String operacao  = request.getParameter("operacao");
+        
+        if(operacao.equals("abrirPagina")){
+              try {
+            RequestDispatcher view = request.getRequestDispatcher("CadastroCliente.jsp");
+            view.forward(request, response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+        }
+        else if(operacao.equals("cadastrar")){
+        
         String nome = request.getParameter("txtNomeCliente");
         String cpf = request.getParameter("txtCpfCliente");
         String email = request.getParameter("txtEmailCliente");
@@ -54,5 +69,6 @@ public class GravarClienteAction implements Action {
         } catch (ServletException e) {
             e.printStackTrace();
         }
+    }
     }
 }
