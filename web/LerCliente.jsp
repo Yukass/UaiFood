@@ -13,7 +13,8 @@
         <title>Ler Cliente</title>
     </head>
     <body>
-             <h1>Cliente</h1>
+       
+         <h1>Cliente</h1>
          <form action ="FrontController?action=LerCliente&operacao=lerCliente" method = "post" name="ManterCliente">
             <table>
             <tr>

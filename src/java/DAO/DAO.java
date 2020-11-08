@@ -112,19 +112,15 @@ public class DAO {
         return objects;
     }
     
-    public Object getLogin(String email, Class classe, String login){
+    public Object getLogin(String email, Class classe){
         
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
         Object objeto = null;
         try{
             tx.begin();
-            TypedQuery<Object> query = em.createQuery("select c From "+ classe.getName() +" c where c."+login +" LIKE :"+login , classe);
-            if(login == "email"){
+            TypedQuery<Object> query = em.createQuery("select c From "+ classe.getName() +" c where c."+ "email" +" LIKE :"+"email" , classe);        
             query.setParameter("email", email);
-            }else{
-               query.setParameter("login", email);
-            }
             objeto = query.getSingleResult();
             tx.commit();
         } catch (Exception e){
