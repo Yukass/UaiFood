@@ -4,11 +4,51 @@
  * and open the template in the editor.
  */
 package action;
-
+import DAO.DAO;
+import controller.Action;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import model.Loja;
 /**
  *
  * @author Yukas
  */
-public class ApagarLojaAction {
-    
+public class ApagarLojaAction implements Action{
+      public ApagarLojaAction() {
+    }
+
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
+         String operacao  = request.getParameter("operacao");
+        
+         if(operacao.equals("abrirPagina")){
+              try {
+            RequestDispatcher view = request.getRequestDispatcher("ApagarLoja.jsp");
+            view.forward(request, response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+        }else if(operacao.equals("apagar")){
+        
+        try {
+            Long idCliente = Long.parseLong(request.getParameter("txtIdLoja"));
+            Loja loja = (Loja) DAO.getInstance().getObjeto(idCliente, Class.forName("model.Loja"));
+            DAO.getInstance().excluir(loja);
+            RequestDispatcher view = request.getRequestDispatcher("/ApagarLoja.jsp");
+            view.forward(request, response);     
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LerClienteAction.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ServletException ex) {
+            Logger.getLogger(LerClienteAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+    }
+    }
 }

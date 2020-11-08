@@ -13,8 +13,10 @@
     </head>
     <body>
         <li><a href="FrontController?action=GravarLoja&operacao=abrirPagina">Registrar Loja</a> </li>
+        <li><a href="FrontController?action=LerLoja&operacao=abrirPagina">Ler Loja</a> </li>
+        <li><a href="FrontController?action=ApagarLoja&operacao=abrirPagina">Apagar Loja</a> </li> 
         <li><a href="FrontController?action=GravarCliente&operacao=abrirPagina">Registrar Cliente</a> </li>
         <li><a href="FrontController?action=LerCliente&operacao=abrirPagina">Ler Cliente</a> </li>
-        <li><a href="FrontController?action=LerLoja&operacao=abrirPagina">Ler Loja</a> </li>      
+        <li><a href="FrontController?action=ApagarCliente&operacao=abrirPagina">Apagar Cliente</a> </li> 
 </body>
 </html>
