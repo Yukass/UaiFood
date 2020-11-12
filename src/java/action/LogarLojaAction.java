@@ -13,7 +13,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Cliente;
+import javax.servlet.http.HttpSession;
 import model.Loja;
 
 /**
@@ -24,7 +24,7 @@ public class LogarLojaAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-          String operacao  = request.getParameter("operacao");
+           String operacao  = request.getParameter("operacao");
         
          if(operacao.equals("abrirPagina")){
               try {
@@ -38,18 +38,27 @@ public class LogarLojaAction implements Action {
         }else if(operacao.equals("logar")){
         
         try {
-            Long idCliente = Long.parseLong(request.getParameter("txtIdCliente"));
-            Cliente cliente = (Cliente) DAO.getInstance().getObjeto(idCliente, Class.forName("model.Cliente"));
-            DAO.getInstance().excluir(cliente);
-            RequestDispatcher view = request.getRequestDispatcher("/ApagarLoja.jsp");
-            view.forward(request, response);     
+            String emailLoja = request.getParameter("txtEmailLoja");
+            String senhaLoja = request.getParameter("txtSenhaLoja");
+            Loja loja = (Loja) DAO.getInstance().getLogin(emailLoja, Class.forName("model.Loja"));
+            if(loja.getSenha().equals(senhaLoja)){
+            HttpSession session = request.getSession(true);   
+            session.setAttribute("usuario", loja.getId());
+            RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+            view.forward(request, response);    
+            }else{
+             RequestDispatcher view = request.getRequestDispatcher("/LogarLoja.jsp");
+             view.forward(request, response);   
+            }
+                
+            
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LerClienteAction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LerLojaAction.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ServletException ex) {
-            Logger.getLogger(LerClienteAction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LerLojaAction.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
-    }
+    } 
     }
     
 }

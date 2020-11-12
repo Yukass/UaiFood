@@ -16,20 +16,20 @@
         <li><a href="FrontController?action=LogarLoja&operacao=abrirPagina">Logar Loja</a> </li>
         <li><a href="FrontController?action=GravarLoja&operacao=abrirPagina">Registrar Loja</a> </li>
         <% } else {%>
-
-        <% } %>
         <li><a href="FrontController?action=LerLoja&operacao=abrirPagina">Ler Loja</a> </li>
         <li><a href="FrontController?action=ApagarLoja&operacao=abrirPagina">Apagar Loja</a> </li> 
+        <% } %>
+    
 
         <br/>
         <% if (session.getAttribute("usuario") == null) { %>
         <li><a href="FrontController?action=LogarCliente&operacao=abrirPagina">Logar Cliente</a> </li>
         <li><a href="FrontController?action=GravarCliente&operacao=abrirPagina">Registrar Cliente</a> </li>
         <% } else {%>
-
-        <% } %>    
         <li><a href="FrontController?action=LerCliente&operacao=abrirPagina">Ler Cliente</a> </li>
         <li><a href="FrontController?action=ApagarCliente&operacao=abrirPagina">Apagar Cliente</a> </li> 
+        <% } %>    
+    
 
 </body>
 </html>
