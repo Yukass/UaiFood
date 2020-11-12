@@ -25,19 +25,18 @@ public class Alimento implements Serializable{
     private String nome;
     private double preco;
     private String descricao;
-    @ManyToOne
-    private Loja loja;
+    private Long idLoja;
 
     
     public Alimento(){
         
     }
     
-    public Alimento(String nome,double preco, String descicao, Loja loja) {
+    public Alimento(String nome,double preco, String descricao, Long idLoja) {
         this.nome = nome;
         this.preco = preco;
         this.descricao = descricao;
-        this.loja = loja;
+        this.idLoja = idLoja;
     }
     
     public Long getId() {
@@ -72,12 +71,12 @@ public class Alimento implements Serializable{
         this.descricao = descricao;
     }
 
-    public Loja getLoja() {
-        return loja;
+    public Long getIdLoja() {
+        return idLoja;
     }
 
-    public void setLoja(Loja loja) {
-        this.loja = loja;
+    public void setIdLoja(Long idLoja) {
+        this.idLoja = idLoja;
     }
     
 }

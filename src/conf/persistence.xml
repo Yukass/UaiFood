@@ -5,6 +5,8 @@
     <class>model.Cliente</class>
     <class>model.Loja</class>
     <class>model.Usuario</class>
+    <class>model.Alimento</class>
+    <class>model.Pedido</class>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/uaifoodpu"/>
