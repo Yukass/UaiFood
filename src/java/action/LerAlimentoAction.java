@@ -42,7 +42,7 @@ public class LerAlimentoAction implements Action {
         String idLoja = session.getAttribute("usuario").toString();
         request.setAttribute("id", idLoja);
         
-        RequestDispatcher view = request.getRequestDispatcher("PesquisarAlimento.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("LerAlimento.jsp");
         view.forward(request, response);
         } catch (IOException e) {
             e.printStackTrace();

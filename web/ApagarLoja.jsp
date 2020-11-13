@@ -14,11 +14,10 @@
     </head>
     <body>
              <h1>Loja</h1>
-         <form action ="FrontController?action=ApagarLoja&operacao=apagar" method = "post" onsubmit=" return validacaoLoja()">
+         <form action ="FrontController?action=ApagarLoja&operacao=apagar" method = "post" >
             <table>
             <tr>
-              <td>ID*:</td>
-              <td><input  name="txtIdLoja" value="${loja.id}"></td>
+              <td>Deseja mesmo apagar?</td>
             </tr>
             <tr>
             </table>

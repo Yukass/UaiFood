@@ -10,10 +10,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro Alimento</title>
+        <title>Pesquisar Alimento</title>
     </head>
     <body>
-             <h1>Cadrasto Alimento</h1>
+             <h1>Pesquisar Alimento</h1>
 
             <table border=1  class=" col-lg-12 ">
             <tr>
@@ -30,10 +30,11 @@
                         <td><c:out value="${alimento.nome}"/></td>
                         <td><c:out value="${alimento.preco}"/></td>
                         <td><c:out value="${alimento.descricao}"/></td>
+                        <td><a href="FrontController?action=EditarAlimento&operacao=abrirPagina&id=<c:out value="${alimento.id}"/>">Editar</a></td>
                     </tr>
                     </c:if>
                 </c:forEach>
         </table>
-            
+                
     </body>
 </html>

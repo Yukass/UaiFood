@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>CNPJ*:</td>
-                <td><input pattern="[0-12].{12}$" title="Utilize Apenas Numeros" required type="text" name="txtCnpjLoja" value="${loja.cnpj}" ></td>
+                <td><input pattern="[0-12].{13}$" title="Utilize Apenas Numeros" required type="text" name="txtCnpjLoja" value="${loja.cnpj}" ></td>
             </tr>
              <tr>
                 <td>Email*:</td>

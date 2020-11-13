@@ -14,7 +14,7 @@
     </head>
     <body>
              <h1>Loja</h1>
-         <form action ="FrontController?action=LerLoja&operacao=lerLoja" method = "post" name="ManterLoja">
+         <form action ="FrontController?action=LerLoja&operacao=editar" method = "post">
             <table>
             <tr>
                 <td>ID*:</td>

@@ -4,7 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/web/index.jsp</file>
-            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/src/java/action/GravarClienteAction.java</file>
+            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/web/LerAlimento.jsp</file>
+            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/src/java/action/EditarAlimentoAction.java</file>
+            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/web/EditarAlimento.jsp</file>
         </group>
     </open-files>
 </project-private>

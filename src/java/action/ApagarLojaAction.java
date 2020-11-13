@@ -13,6 +13,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Loja;
 /**
  *
@@ -27,7 +28,7 @@ public class ApagarLojaAction implements Action{
          String operacao  = request.getParameter("operacao");
         
          if(operacao.equals("abrirPagina")){
-              try {
+              try {             
             RequestDispatcher view = request.getRequestDispatcher("ApagarLoja.jsp");
             view.forward(request, response);
         } catch (IOException e) {
@@ -38,10 +39,13 @@ public class ApagarLojaAction implements Action{
         }else if(operacao.equals("apagar")){
         
         try {
-            Long idCliente = Long.parseLong(request.getParameter("txtIdLoja"));
-            Loja loja = (Loja) DAO.getInstance().getObjeto(idCliente, Class.forName("model.Loja"));
+            HttpSession session = request.getSession();
+            Long idLoja = Long.parseLong(session.getAttribute("usuario").toString());
+            Loja loja = (Loja) DAO.getInstance().getObjeto(idLoja, Class.forName("model.Loja"));
             DAO.getInstance().excluir(loja);
-            RequestDispatcher view = request.getRequestDispatcher("/ApagarLoja.jsp");
+            session.removeAttribute("usuario");
+            request.getSession(false);
+            RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
             view.forward(request, response);     
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LerClienteAction.class.getName()).log(Level.SEVERE, null, ex);

@@ -4,51 +4,73 @@
  * and open the template in the editor.
  */
 package action;
+
 import DAO.DAO;
 import controller.Action;
 import java.io.IOException;
+import java.sql.SQLException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import controller.Action;
+import model.Cliente;
+import java.io.IOException;
+import javax.servlet.http.*;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import model.Cliente;
+import model.Alimento;
+
 /**
  *
  * @author Yukas
  */
-public class ApagarAlimentoAction implements Action{
-      public ApagarAlimentoAction() {
+public class ApagarAlimentoAction implements Action {
+
+    public ApagarAlimentoAction() {
     }
 
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+          
+        String operacao  = request.getParameter("operacao");
         
-         String operacao  = request.getParameter("operacao");
+        if(operacao.equals("abrirPagina")){
+              try {          
+        request.setAttribute("alimentos", DAO.getInstance().getAllObjetos(Class.forName("model.Alimento")));
+        HttpSession session = request.getSession();
+        String idLoja = session.getAttribute("usuario").toString();
+        request.setAttribute("id", idLoja);
         
-         if(operacao.equals("abrirPagina")){
-              try {
-            RequestDispatcher view = request.getRequestDispatcher("ApagarCliente.jsp");
-            view.forward(request, response);
+        RequestDispatcher view = request.getRequestDispatcher("ApagarAlimento.jsp");
+        view.forward(request, response);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ServletException e) {
             e.printStackTrace();
+        }   catch (ClassNotFoundException ex) {
+                Logger.getLogger(LerAlimentoAction.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        }else if(operacao.equals("apagar")){
-        
-        try {
-            Long idCliente = Long.parseLong(request.getParameter("txtIdCliente"));
-            Cliente cliente = (Cliente) DAO.getInstance().getObjeto(idCliente, Class.forName("model.Cliente"));
-            DAO.getInstance().excluir(cliente);
-            RequestDispatcher view = request.getRequestDispatcher("/ApagarLoja.jsp");
-            view.forward(request, response);     
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LerClienteAction.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ServletException ex) {
-            Logger.getLogger(LerClienteAction.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        else if(operacao.equals("apagar")){
+            try {
                 
-    }
+                Long idComida = Long.parseLong(request.getParameter("comida"));
+                DAO.getInstance().excluir(idComida, Class.forName("model.Alimento"));
+                
+                request.setAttribute("alimentos", DAO.getInstance().getAllObjetos(Class.forName("model.Alimento")));
+                HttpSession session = request.getSession();
+                String idLoja = session.getAttribute("usuario").toString();
+                request.setAttribute("id", idLoja);
+                RequestDispatcher view = request.getRequestDispatcher("ApagarAlimento.jsp");
+                view.forward(request, response);
+  
+            } catch (ServletException ex) {
+                Logger.getLogger(ApagarAlimentoAction.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ApagarAlimentoAction.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
     }
 }

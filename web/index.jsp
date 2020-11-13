@@ -16,10 +16,11 @@
         <li><a href="FrontController?action=LogarLoja&operacao=abrirPagina">Logar Loja</a> </li>
         <li><a href="FrontController?action=GravarLoja&operacao=abrirPagina">Registrar Loja</a> </li>
         <% } else {%>
-        <li><a href="FrontController?action=LerLoja&operacao=abrirPagina">Ler Loja</a> </li>
+        <li><a href="FrontController?action=LerLoja&operacao=abrirPagina">Editar Loja</a> </li>
         <li><a href="FrontController?action=ApagarLoja&operacao=abrirPagina">Apagar Loja</a> </li> 
         <li><a href="FrontController?action=GravarAlimento&operacao=abrirPagina">Cadastrar Alimento</a></li>
         <li><a href="FrontController?action=LerAlimento&operacao=abrirPagina">Pesquisar Alimento</a></li>
+        <li><a href="FrontController?action=ApagarAlimento&operacao=abrirPagina">Apagar Alimento</a></li>
         <li><a href="FrontController?action=LogarLoja&operacao=deslogar">Deslogar Loja</a> </li>
         <% } %>
     

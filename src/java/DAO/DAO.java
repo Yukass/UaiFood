@@ -69,6 +69,28 @@ public class DAO {
         }
     }
      
+     public void excluir(long id, Class classe){
+        
+        EntityManager em = PersistenceUtil.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+      
+        Object obj = null;
+        try{
+            tx.begin();
+            obj = em.find(classe, id);
+            em.remove(em.getReference(obj.getClass(), id));
+            tx.commit();
+        } catch (Exception e){
+            if(tx != null && tx.isActive()){
+                tx.rollback();
+            }
+            throw new RuntimeException(e);
+        }finally{
+            PersistenceUtil.close(em);
+        }
+    }
+     
+     
        public Object getObjeto(long id, Class classe){
         
         EntityManager em = PersistenceUtil.getEntityManager();
