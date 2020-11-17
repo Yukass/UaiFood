@@ -40,10 +40,10 @@ public class ApagarLojaAction implements Action{
         
         try {
             HttpSession session = request.getSession();
-            Long idLoja = Long.parseLong(session.getAttribute("usuario").toString());
+            Long idLoja = Long.parseLong(session.getAttribute("loja").toString());
             Loja loja = (Loja) DAO.getInstance().getObjeto(idLoja, Class.forName("model.Loja"));
             DAO.getInstance().excluir(loja);
-            session.removeAttribute("usuario");
+            session.removeAttribute("loja");
             request.getSession(false);
             RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
             view.forward(request, response);     

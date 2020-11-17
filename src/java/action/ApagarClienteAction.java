@@ -13,6 +13,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Cliente;
 /**
  *
@@ -27,7 +28,7 @@ public class ApagarClienteAction implements Action{
          String operacao  = request.getParameter("operacao");
         
          if(operacao.equals("abrirPagina")){
-              try {
+              try {             
             RequestDispatcher view = request.getRequestDispatcher("ApagarCliente.jsp");
             view.forward(request, response);
         } catch (IOException e) {
@@ -38,10 +39,13 @@ public class ApagarClienteAction implements Action{
         }else if(operacao.equals("apagar")){
         
         try {
-            Long idCliente = Long.parseLong(request.getParameter("txtIdCliente"));
+            HttpSession session = request.getSession();
+            Long idCliente = Long.parseLong(session.getAttribute("cliente").toString());
             Cliente cliente = (Cliente) DAO.getInstance().getObjeto(idCliente, Class.forName("model.Cliente"));
             DAO.getInstance().excluir(cliente);
-            RequestDispatcher view = request.getRequestDispatcher("/ApagarLoja.jsp");
+            session.removeAttribute("cliente");
+            request.getSession(false);
+            RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
             view.forward(request, response);     
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LerClienteAction.class.getName()).log(Level.SEVERE, null, ex);

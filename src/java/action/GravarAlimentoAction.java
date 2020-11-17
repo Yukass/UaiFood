@@ -53,7 +53,7 @@ public class GravarAlimentoAction implements Action {
         String descricao = request.getParameter("txtDescricaoAlimento");
         
         HttpSession session = request.getSession();
-        Long idLoja = Long.parseLong(session.getAttribute("usuario").toString());
+        Long idLoja = Long.parseLong(session.getAttribute("loja").toString());
         Long id = null;
 
         Alimento alimento = new Alimento(nome, precoDouble, descricao, idLoja);
