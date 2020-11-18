@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/web/index.jsp</file>
-            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/web/LerAlimento.jsp</file>
-            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/src/java/action/EditarAlimentoAction.java</file>
-            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/web/EditarAlimento.jsp</file>
+            <file>file:/C:/Users/T-Gamer/Documents/GitHub/UaiFood/src/java/model/Loja.java</file>
+            <file>file:/C:/Users/T-Gamer/Documents/GitHub/UaiFood/src/java/controller/ActionFactory.java</file>
+            <file>file:/C:/Users/T-Gamer/Documents/GitHub/UaiFood/src/java/controller/FrontController.java</file>
+            <file>file:/C:/Users/T-Gamer/Documents/GitHub/UaiFood/src/java/DAO/DAO.java</file>
+            <file>file:/C:/Users/T-Gamer/Documents/GitHub/UaiFood/web/CadastroCliente.jsp</file>
+            <file>file:/C:/Users/T-Gamer/Documents/GitHub/UaiFood/src/java/model/Pedido.java</file>
         </group>
     </open-files>
 </project-private>
