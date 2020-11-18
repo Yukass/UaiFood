@@ -14,11 +14,10 @@
     </head>
     <body>
              <h1>Cliente</h1>
-         <form action ="FrontController?action=ApagarCliente&operacao=apagar" method = "post" name="ManterCliente" onsubmit=" return validacaoCliente()">
+         <form action ="FrontController?action=ApagarCliente&operacao=apagar" method = "post" >
             <table>
             <tr>
-              <td>ID*:</td>
-              <td><input  name="txtIdCliente" value="${cliente.id}"></td>
+              <td>Deseja mesmo apagar?</td>
             </tr>
             <tr>
             </table>

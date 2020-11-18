@@ -20,15 +20,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import model.Alimento;
+import model.Loja;
 
 /**
  *
  * @author Yukas
  */
-public class LerAlimentoAction implements Action {
+public class LerLojasAction implements Action {
 
-    public LerAlimentoAction() {
+    public LerLojasAction() {
     }
 
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -37,19 +37,15 @@ public class LerAlimentoAction implements Action {
         
         if(operacao.equals("abrirPagina")){
               try {          
-        request.setAttribute("alimentos", DAO.getInstance().getAllObjetos(Class.forName("model.Alimento")));
-        HttpSession session = request.getSession();
-        String idLoja = session.getAttribute("loja").toString();
-        request.setAttribute("id", idLoja);
-        
-        RequestDispatcher view = request.getRequestDispatcher("LerAlimento.jsp");
+        request.setAttribute("lojas", DAO.getInstance().getAllObjetos(Class.forName("model.Loja")));
+        RequestDispatcher view = request.getRequestDispatcher("LerLojas.jsp");
         view.forward(request, response);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ServletException e) {
             e.printStackTrace();
         }   catch (ClassNotFoundException ex) {
-                Logger.getLogger(LerAlimentoAction.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(LerLojaAction.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         

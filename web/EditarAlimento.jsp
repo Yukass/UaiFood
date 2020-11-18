@@ -14,7 +14,7 @@
     </head>
     <body>
              <h1>Editar Alimento</h1>
-         <form action ="FrontController?action=EditarAlimento&operacao=editar" method = "post">
+         <form action ="FrontController?action=EditarAlimento&operacao=editar&id=<c:out value="${alimento.id}"/>" method = "post">
             <table>
             <tr>
                 <td>NOME*:</td>

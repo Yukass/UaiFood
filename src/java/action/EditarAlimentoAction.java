@@ -38,7 +38,6 @@ public class EditarAlimentoAction implements Action {
         if(operacao.equals("abrirPagina")){
               try {          
         Long idComida = Long.parseLong(request.getParameter("id"));
-        request.setAttribute("idComida", idComida);
         request.setAttribute("alimento", DAO.getInstance().getObjeto(idComida, Class.forName("model.Alimento")));
         RequestDispatcher view = request.getRequestDispatcher("EditarAlimento.jsp");
         view.forward(request, response);
@@ -54,12 +53,12 @@ public class EditarAlimentoAction implements Action {
         String nome = request.getParameter("txtNomeAlimento");
         String preco = request.getParameter("txtPrecoAlimento");
         String descricao = request.getParameter("txtDescricaoAlimento");
-        Long id = Long.parseLong(request.getParameter("idComida"));
+        Long id = Long.parseLong(request.getParameter("id"));
         preco = preco.replace(",",".");
         Double precoDouble = Double.parseDouble(preco);   
         
         HttpSession session = request.getSession();
-        Long idLoja = Long.parseLong(session.getAttribute("usuario").toString());
+        Long idLoja = Long.parseLong(session.getAttribute("loja").toString());
 
         Alimento alimento = new Alimento(nome, precoDouble, descricao, idLoja);
         alimento.setId(id);

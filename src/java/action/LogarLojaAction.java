@@ -44,7 +44,7 @@ public class LogarLojaAction implements Action {
                 Loja loja = (Loja) DAO.getInstance().getLogin(emailLoja, Class.forName("model.Loja"));
                 if (loja.getSenha().equals(senhaLoja)) {
                     HttpSession session = request.getSession(true);
-                    session.setAttribute("usuario", loja.getId());
+                    session.setAttribute("loja", loja.getId());
                     RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
                     view.forward(request, response);
                 } else {
@@ -61,7 +61,7 @@ public class LogarLojaAction implements Action {
         } else if (operacao.equals("deslogar")) {
             try {
                 HttpSession session = request.getSession();
-                session.removeAttribute("usuario");
+                session.removeAttribute("loja");
                 request.getSession(false);
                 RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
                 view.forward(request, response);

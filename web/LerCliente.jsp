@@ -15,7 +15,7 @@
     <body>
        
          <h1>Cliente</h1>
-         <form action ="FrontController?action=LerCliente&operacao=lerCliente" method = "post" name="ManterCliente">
+         <form action ="FrontController?action=LerCliente&operacao=editar" method = "post" name="ManterCliente">
             <table>
             <tr>
                 <td>ID*:</td>

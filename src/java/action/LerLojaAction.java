@@ -33,7 +33,7 @@ public class LerLojaAction implements Action{
          if(operacao.equals("abrirPagina")){
               try {
             HttpSession session = request.getSession();
-            Long idLoja = Long.parseLong(session.getAttribute("usuario").toString());
+            Long idLoja = Long.parseLong(session.getAttribute("loja").toString());
             Loja loja = (Loja) DAO.getInstance().getObjeto(idLoja, Class.forName("model.Loja"));
             request.setAttribute("loja", loja);
  
@@ -64,7 +64,7 @@ public class LerLojaAction implements Action{
             Loja loja = new Loja(nome, cnpj, email, senha, telefone, cep, logradouro, bairro, numero,
                     complemento, cidade, estado);
             HttpSession session = request.getSession();
-            Long idLoja = Long.parseLong(session.getAttribute("usuario").toString());
+            Long idLoja = Long.parseLong(session.getAttribute("loja").toString());
             id = idLoja;
             loja.setId(id);
         try {          
