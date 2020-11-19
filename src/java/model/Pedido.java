@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,21 +24,21 @@ public class Pedido implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private double total;
-    private String status;
+    private PedidoEstado status;
     private Cliente cliente;
     private Pagamento pagamento;
-    private List<Alimento> alimentos;
+    private ArrayList<Alimento> itensPedido;
 
     public Pedido() {
     }
 
-    public Pedido(Long id, double total, String status, Cliente cliente, Pagamento pagamento, List<Alimento> alimentos) {
+    public Pedido(Long id, double total, String status, Cliente cliente, Pagamento pagamento, ArrayList<Alimento> itensPedido) {
         this.id = id;
         this.total = total;
-        this.status = status;
+        this.status = new PedidoEstadoRecebido();
         this.cliente = cliente;
         this.pagamento = pagamento;
-        this.alimentos = alimentos;
+        this.itensPedido = itensPedido;
     }
 
     public Long getId() {
@@ -56,11 +57,11 @@ public class Pedido implements Serializable{
         this.total = total;
     }
 
-    public String getStatus() {
+    public PedidoEstado getStatus() {
         return status;
     }
-
-    public void setStatus(String status) {
+    
+    public void setEstado(PedidoEstado status){
         this.status = status;
     }
 
@@ -80,12 +81,12 @@ public class Pedido implements Serializable{
         this.pagamento = pagamento;
     }
 
-    public List<Alimento> getAlimentos() {
-        return alimentos;
+    public ArrayList<Alimento> getItensPedido() {
+        return itensPedido;
     }
 
-    public void setAlimentos(List<Alimento> alimentos) {
-        this.alimentos = alimentos;
+    public void setItensPedido(ArrayList<Alimento> itensPedido) {
+        this.itensPedido = itensPedido;
     }
     
 }
