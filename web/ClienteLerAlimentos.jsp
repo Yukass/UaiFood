@@ -30,7 +30,7 @@
                         <td><c:out value="${alimento.nome}"/></td>
                         <td><c:out value="${alimento.preco}"/></td>
                         <td><c:out value="${alimento.descricao}"/></td>
-                        <td><a href="FrontController?action=EditarAlimento&operacao=abrirPagina&id=<c:out value="${alimento.id}"/>">Pedir</a></td>
+                        <td><a href="FrontController?action=ItemPedido&operacao=adicionar&idAlimento=<c:out value="${alimento.id}"/>">Pedir</a></td>
                     </tr>
                     </c:if>
                 </c:forEach>

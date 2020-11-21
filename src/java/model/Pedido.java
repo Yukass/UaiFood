@@ -27,13 +27,12 @@ public class Pedido implements Serializable{
     private PedidoEstado status;
     private Cliente cliente;
     private Pagamento pagamento;
-    private ArrayList<Alimento> itensPedido;
+    private ArrayList<Item_Pedido> itensPedido;
 
     public Pedido() {
     }
-
-    public Pedido(Long id, double total, String status, Cliente cliente, Pagamento pagamento, ArrayList<Alimento> itensPedido) {
-        this.id = id;
+    
+    public Pedido(double total, String status, Cliente cliente, Pagamento pagamento, ArrayList<Item_Pedido> itensPedido) {
         this.total = total;
         this.status = new PedidoEstadoRecebido();
         this.cliente = cliente;
@@ -81,11 +80,11 @@ public class Pedido implements Serializable{
         this.pagamento = pagamento;
     }
 
-    public ArrayList<Alimento> getItensPedido() {
+    public ArrayList<Item_Pedido> getItensPedido() {
         return itensPedido;
     }
 
-    public void setItensPedido(ArrayList<Alimento> itensPedido) {
+    public void setItensPedido(ArrayList<Item_Pedido> itensPedido) {
         this.itensPedido = itensPedido;
     }
     

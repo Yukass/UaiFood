@@ -15,8 +15,9 @@ import javax.persistence.Entity;
 public class Item_Pedido {
     private Alimento alimento;
     private Integer quantidade;
-    private Float precoUnitario;
+    private double precoUnitario;
 
+    
     public Alimento getAlimento() {
         return alimento;
     }
@@ -33,11 +34,11 @@ public class Item_Pedido {
         this.quantidade = quantidade;
     }
 
-    public Float getPrecoUnitario() {
+    public double getPrecoUnitario() {
         return precoUnitario;
     }
 
-    public void setPrecoUnitario(Float precoUnitario) {
+    public void setPrecoUnitario(double precoUnitario) {
         this.precoUnitario = precoUnitario;
     }
     
