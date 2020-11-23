@@ -5,26 +5,48 @@
  */
 package model;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author Yukas
  */
-
-public class Item_Pedido {
-    private Alimento alimento;
+@Entity
+public class Item_Pedido implements Serializable{
+    private static final long serialVerionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private Long idAlimento;
     private Integer quantidade;
     private double precoUnitario;
 
-    
-    public Alimento getAlimento() {
-        return alimento;
+    public Item_Pedido(Long idAlimento, Integer quantidade, double precoUnitario) {
+        this.idAlimento = idAlimento;
+        this.quantidade = quantidade;
+        this.precoUnitario = precoUnitario;
     }
 
-    public void setAlimento(Alimento alimento) {
-        this.alimento = alimento;
+    public Long getId() {
+        return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getIdAlimento() {
+        return idAlimento;
+    }
+
+    public void setIdAlimento(Long idAlimento) {
+        this.idAlimento = idAlimento;
+    }
+
 
     public Integer getQuantidade() {
         return quantidade;

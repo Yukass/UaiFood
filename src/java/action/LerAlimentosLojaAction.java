@@ -37,11 +37,12 @@ public class LerAlimentosLojaAction implements Action {
         
         if(operacao.equals("abrirPagina")){
               try {   
-        String idLoja = request.getParameter("id").toString();
+        String idLoja = request.getParameter("id");
         request.setAttribute("alimentos", DAO.getInstance().getAllObjetos(Class.forName("model.Alimento")));
+        request.setAttribute("lojas", DAO.getInstance().getAllObjetos(Class.forName("model.Loja")));
         request.setAttribute("id", idLoja);
         
-        RequestDispatcher view = request.getRequestDispatcher("ClienteLerAlimentos.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("realizarVenda.jsp");
         view.forward(request, response);
         } catch (IOException e) {
             e.printStackTrace();

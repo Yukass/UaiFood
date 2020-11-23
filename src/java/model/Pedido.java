@@ -24,20 +24,22 @@ public class Pedido implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private double total;
-    private PedidoEstado status;
+    private String status;
     private Cliente cliente;
-    private Pagamento pagamento;
-    private ArrayList<Item_Pedido> itensPedido;
+    private String pagamento;
+    //Mudar String por Pagamento
+    private ArrayList<Item_Pedido> itensPedidos;
 
     public Pedido() {
     }
     
-    public Pedido(double total, String status, Cliente cliente, Pagamento pagamento, ArrayList<Item_Pedido> itensPedido) {
+    public Pedido(double total, Cliente cliente, String pagamento, ArrayList<Item_Pedido> itensPedidos) {
         this.total = total;
-        this.status = new PedidoEstadoRecebido();
+        PedidoEstadoRecebido estado = new PedidoEstadoRecebido();
+        this.status = estado.getEstado();
         this.cliente = cliente;
         this.pagamento = pagamento;
-        this.itensPedido = itensPedido;
+        this.itensPedidos = itensPedidos;
     }
 
     public Long getId() {
@@ -56,11 +58,11 @@ public class Pedido implements Serializable{
         this.total = total;
     }
 
-    public PedidoEstado getStatus() {
+    public String getStatus() {
         return status;
     }
     
-    public void setEstado(PedidoEstado status){
+    public void setEstado(String status){
         this.status = status;
     }
 
@@ -72,20 +74,20 @@ public class Pedido implements Serializable{
         this.cliente = cliente;
     }
 
-    public Pagamento getPagamento() {
+    public String getPagamento() {
         return pagamento;
     }
 
-    public void setPagamento(Pagamento pagamento) {
+    public void setPagamento(String pagamento) {
         this.pagamento = pagamento;
     }
 
     public ArrayList<Item_Pedido> getItensPedido() {
-        return itensPedido;
+        return itensPedidos;
     }
 
-    public void setItensPedido(ArrayList<Item_Pedido> itensPedido) {
-        this.itensPedido = itensPedido;
+    public void setItensPedido(ArrayList<Item_Pedido> itensPedidos) {
+        this.itensPedidos = itensPedidos;
     }
     
 }

@@ -9,7 +9,7 @@ package model;
  *
  * @author Yukas
  */
-public interface PedidoEstado {
+public interface PedidoEstado {    
     public String getEstado();
     
     public void receber(Pedido pedido);
