@@ -9,20 +9,44 @@ package model;
  *
  * @author Yukas
  */
-public interface PedidoEstado {    
-    public String getEstado();
+public abstract class PedidoEstado {    
+    protected String nome;
+    protected String mensagem;
+   
     
-    public void receber(Pedido pedido);
+    public boolean receber(Pedido pedido){
+        return false;
+    }
     
-    public void preparar(Pedido pedido);
+    public boolean preparar(Pedido pedido){
+        return false;
+    }
     
-    public void despachar(Pedido pedido);
+    public boolean despachar(Pedido pedido){
+        return false;
+    }
     
-    public void entregar(Pedido pedido);
+    public boolean entregar(Pedido pedido){
+        return false;
+    }
     
-    public void devolver(Pedido pedido);
+    public boolean devolver(Pedido pedido){
+        return false;
+    }
     
-    public void cancelar(Pedido pedido);
+    public boolean cancelar(Pedido pedido){
+        return false;
+    }
     
-    public void finalizar(Pedido pedido);
+    public boolean finalizar(Pedido pedido){
+        return false;
+    }
+    
+    public String getNome(){
+        return nome;
+    }
+    
+    public String getMensagem(){
+        return mensagem;
+    }
 }

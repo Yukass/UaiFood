@@ -9,32 +9,23 @@ package model;
  *
  * @author Yukas
  */
-public class PedidoEstadoDevolvido implements PedidoEstado{
+public class PedidoEstadoDevolvido extends PedidoEstado{
 
-    public String getEstado() {
-        return "Devolvido";
+    public PedidoEstadoDevolvido(){
+        this.nome = "Devolvido";
+        this.mensagem = "Pedido foi devolvido";      
     }
 
-    public void receber(Pedido pedido) {
+
+    public boolean preparar(Pedido pedido) {
+        pedido.setStatus(new PedidoEstadoPreparo());
+        return true;
     }
 
-    public void preparar(Pedido pedido) {
-        pedido.setEstado(new PedidoEstadoPreparo());
-    }
-
-    public void despachar(Pedido pedido) {
-    }
-
-    public void entregar(Pedido pedido) {
-    }
-
-    public void devolver(Pedido pedido) {
-    }
-
-    public void cancelar(Pedido pedido) {
-    }
     
-    public void finalizar(Pedido pedido){
+    public boolean finalizar(Pedido pedido){
+        pedido.setStatus(new PedidoEstadoFinalizado());
+        return true;
     }
     
 }

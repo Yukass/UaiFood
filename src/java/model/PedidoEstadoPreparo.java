@@ -9,34 +9,22 @@ package model;
  *
  * @author Yukas
  */
-public class PedidoEstadoPreparo implements PedidoEstado{
-
-    public String getEstado() {
-        return "Preparando";
-    }
-
-    public void receber(Pedido pedido) {
-    }
-
-    public void preparar(Pedido pedido) {
-    }
-
-    public void despachar(Pedido pedido) {
-        pedido.setEstado(new PedidoEstadoDespachado());
-    }
-
-    public void entregar(Pedido pedido) {
-    }
-
-    public void devolver(Pedido pedido) {
-    }
-
-    public void cancelar(Pedido pedido) {
-        pedido.setEstado(new PedidoEstadoCancelado());
-    }
+public class PedidoEstadoPreparo extends PedidoEstado{
     
-    public void finalizar(Pedido pedido){
+    public PedidoEstadoPreparo(){
+        this.nome = "Preparo";
+        this.mensagem = "Pedido sendo preparado";      
     }
-    
+
+    public boolean despachar(Pedido pedido) {
+        pedido.setStatus(new PedidoEstadoDespachado());
+        return true;
+    }
+
+    public boolean cancelar(Pedido pedido) {
+        pedido.setStatus(new PedidoEstadoCancelado());
+        return true;
+    }
+
     
 }

@@ -8,6 +8,7 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,13 +19,13 @@ import javax.persistence.Id;
  * @author Yukas
  */
 @Entity
-public class Pedido implements Serializable{
+public class Pedido extends Observable implements Serializable{
     private static final long serialVerionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private double total;
-    private String status;
+    private PedidoEstado status;
     private Cliente cliente;
     private String pagamento;
     //Mudar String por Pagamento
@@ -35,8 +36,7 @@ public class Pedido implements Serializable{
     
     public Pedido(double total, Cliente cliente, String pagamento, ArrayList<Item_Pedido> itensPedidos) {
         this.total = total;
-        PedidoEstadoRecebido estado = new PedidoEstadoRecebido();
-        this.status = estado.getEstado();
+        this.status = new PedidoEstadoRecebido();
         this.cliente = cliente;
         this.pagamento = pagamento;
         this.itensPedidos = itensPedidos;
@@ -58,20 +58,33 @@ public class Pedido implements Serializable{
         this.total = total;
     }
 
-    public String getStatus() {
+    public PedidoEstado getStatus() {
         return status;
     }
-    
-    public void setEstado(String status){
+
+    public Pedido setStatus(PedidoEstado status) {
         this.status = status;
+        return this;
     }
 
     public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public Pedido setCliente(Cliente cliente) {
         this.cliente = cliente;
+        this.addObserver(this.cliente);
+        return this;
+    }
+    
+    public Pedido setPedido(Cliente cliente) {
+        this.cliente = cliente;
+        return this;
+    }
+    
+    public void notificar() {
+        setChanged();
+        notifyObservers();
     }
 
     public String getPagamento() {
@@ -82,11 +95,11 @@ public class Pedido implements Serializable{
         this.pagamento = pagamento;
     }
 
-    public ArrayList<Item_Pedido> getItensPedido() {
+    public ArrayList<Item_Pedido> getItensPedidos() {
         return itensPedidos;
     }
 
-    public void setItensPedido(ArrayList<Item_Pedido> itensPedidos) {
+    public void setItensPedidos(ArrayList<Item_Pedido> itensPedidos) {
         this.itensPedidos = itensPedidos;
     }
     

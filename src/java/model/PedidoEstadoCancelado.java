@@ -9,32 +9,16 @@ package model;
  *
  * @author Yukas
  */
-public class PedidoEstadoCancelado implements PedidoEstado{
+public class PedidoEstadoCancelado extends PedidoEstado{
 
-    public String getEstado() {
-        return "Cancelado";
+    public PedidoEstadoCancelado(){
+        this.nome = "Cancelado";
+        this.mensagem = "Pedido foi cancelado";      
     }
 
-    public void receber(Pedido pedido) {
-    }
-
-    public void preparar(Pedido pedido) {
-    }
-
-    public void despachar(Pedido pedido) {
-    }
-
-    public void entregar(Pedido pedido) {
-    }
-
-    public void devolver(Pedido pedido) {
-    }
-
-    public void cancelar(Pedido pedido) {
-    }
-    
-    public void finalizar(Pedido pedido){
-        pedido.setEstado(new PedidoEstadoFinalizado());
+    public boolean finalizar(Pedido pedido){
+        pedido.setStatus(new PedidoEstadoFinalizado());
+        return true;
     }
     
 }

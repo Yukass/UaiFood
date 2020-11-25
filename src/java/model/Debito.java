@@ -11,4 +11,25 @@ package model;
  */
 public class Debito implements Pagamento{
     
+    public Long id;
+    
+    public Debito() {
+        this.id = 2L;
+    }
+
+    @Override
+    public String getNome() {
+        return "Debito";
+    }
+
+    @Override
+    public Long getId() {
+        return 2L;
+    }
+
+    @Override
+    public float getDesconto() {
+        return 10;
+    }
+    
 }

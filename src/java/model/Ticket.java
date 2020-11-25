@@ -10,5 +10,25 @@ package model;
  * @author Yukas
  */
 public class Ticket implements Pagamento{
+    public Long id;
+    
+    public Ticket() {
+        this.id = 3L;
+    }
+
+    @Override
+    public String getNome() {
+        return "Ticket";
+    }
+
+    @Override
+    public Long getId() {
+        return 3L;
+    }
+
+    @Override
+    public float getDesconto() {
+        return 0;
+    }
     
 }
