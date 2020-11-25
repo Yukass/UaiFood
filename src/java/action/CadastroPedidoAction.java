@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Action;
 import model.Cliente;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import javax.servlet.http.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -23,9 +26,13 @@ import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import model.Alimento;
+import model.Debito;
+import model.Dinheiro;
 import model.Item_Pedido;
+import model.Pagamento;
 import model.Pedido;
 import model.PedidoEstadoRecebido;
+import model.Ticket;
 
 /**
  *
@@ -33,6 +40,18 @@ import model.PedidoEstadoRecebido;
  */
 public class CadastroPedidoAction implements Action {
 
+    private static Pagamento instancePagamento;
+    
+    void VerificaMetodoPagamento(String metodoPagamento){
+             if(metodoPagamento.equals("Dinheiro")){
+              instancePagamento = new Dinheiro();
+          }else if(metodoPagamento.equals("Debito")){
+              instancePagamento = new Debito();
+          }else{
+              instancePagamento = new Ticket();
+          }
+    }
+    
     public CadastroPedidoAction() {
     }
 
@@ -43,12 +62,8 @@ public class CadastroPedidoAction implements Action {
          if(operacao.equals("cadastrar")){
         
         List<String> alimentos = new ArrayList();
-        //List<String> idAlimento = new ArrayList();
-        //List<String> qntAlimento = new ArrayList();
-        //List<String> valorUnitarioAlimento = new ArrayList();
         ArrayList<Item_Pedido> itensPedidos = new ArrayList();
-        
-        
+              
         int incrementoInt;
         String incrementoString;
         for (int i = 0; i < 4; i++) 
@@ -65,9 +80,6 @@ public class CadastroPedidoAction implements Action {
         for (int i = 0; i < alimentos.size(); i++) {
             
             String[] textoSeparado = alimentos.get(i).split(",");
-            //idAlimento.add(textoSeparado[0]);
-            //qntAlimento.add(textoSeparado[1]);
-            //valorUnitarioAlimento.add(textoSeparado[2]);
             Long idItemPedido = Long.parseLong(textoSeparado[0]);
             Integer quantidadeItemPedido = Integer.parseInt(textoSeparado[1]);
             Double valorUnitarioItemPedido = Double.parseDouble(textoSeparado[2]);
@@ -82,12 +94,13 @@ public class CadastroPedidoAction implements Action {
           HttpSession session = request.getSession();
           Long idCliente = Long.parseLong(session.getAttribute("cliente").toString());
           
+          String metodoPagamento = request.getParameter("formaPagamentoTxt");
+          
+          VerificaMetodoPagamento(metodoPagamento);
+          
             try {
-                Cliente cliente = (Cliente) DAO.getInstance().getObjeto(idCliente, Class.forName("model.Cliente")); 
-                
-              //alimento, quantidade, valorTotal
-         
-               Pedido pedido = new Pedido(valorTotal, cliente, "dinheiro", itensPedidos);    
+               Cliente cliente = (Cliente) DAO.getInstance().getObjeto(idCliente, Class.forName("model.Cliente")); 
+               Pedido pedido = new Pedido(instancePagamento.calculaDesconto(valorTotal), cliente, instancePagamento, itensPedidos);    
                DAO.getInstance().salvar(pedido);
                alimentos.clear();
                itensPedidos.clear();

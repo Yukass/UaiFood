@@ -5,11 +5,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Yukas
  */
-public class Ticket implements Pagamento{
+public class Ticket implements Pagamento, Serializable{
     public Long id;
     
     public Ticket() {
@@ -29,6 +31,12 @@ public class Ticket implements Pagamento{
     @Override
     public float getDesconto() {
         return 0;
+    }
+
+    @Override
+    public double calculaDesconto(double valor) {
+       
+        return valor;
     }
     
 }

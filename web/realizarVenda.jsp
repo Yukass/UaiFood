@@ -147,6 +147,12 @@
                     </div>
                 </div>
                  <center>
+                            <input type="radio" id="dinheiro" name="formaPagamentoTxt" value="Dinheiro" checked>
+                            <label for="dinheiro">Dinheiro</label>
+                            <input type="radio" id="debito" name="formaPagamentoTxt" value="Debito">
+                            <label for="debito">Debito</label>
+                            <input type="radio" id="ticket" name="formaPagamentoTxt" value="Ticket">
+                            <label for="ticket">Ticket</label>
                             <button type="submit" class="btn btn-success">Finalizar Venda</button>
                         </center>
             </form>

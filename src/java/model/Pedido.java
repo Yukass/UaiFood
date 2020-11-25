@@ -27,14 +27,14 @@ public class Pedido extends Observable implements Serializable{
     private double total;
     private PedidoEstado status;
     private Cliente cliente;
-    private String pagamento;
+    private Pagamento pagamento;
     //Mudar String por Pagamento
     private ArrayList<Item_Pedido> itensPedidos;
 
     public Pedido() {
     }
     
-    public Pedido(double total, Cliente cliente, String pagamento, ArrayList<Item_Pedido> itensPedidos) {
+    public Pedido(double total, Cliente cliente, Pagamento pagamento, ArrayList<Item_Pedido> itensPedidos) {
         this.total = total;
         this.status = new PedidoEstadoRecebido();
         this.cliente = cliente;
@@ -87,11 +87,11 @@ public class Pedido extends Observable implements Serializable{
         notifyObservers();
     }
 
-    public String getPagamento() {
+    public Pagamento getPagamento() {
         return pagamento;
     }
 
-    public void setPagamento(String pagamento) {
+    public void setPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
     }
 

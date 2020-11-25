@@ -9,12 +9,14 @@ package model;
  *
  * @author Yukas
  */
-public interface Pagamento{
+public interface Pagamento {
     
     public Long getId();
 
     public String getNome();
 
     public float getDesconto();
+    
+    public double calculaDesconto(double valor);
 
 }

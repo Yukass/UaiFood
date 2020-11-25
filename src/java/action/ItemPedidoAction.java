@@ -40,9 +40,9 @@ public class ItemPedidoAction implements Action {
         if(operacao.equals("adicionar")){
               try {  
         request.setAttribute("alimentos", DAO.getInstance().getAllObjetos(Class.forName("model.Alimento")));
-        Long idAlimento = Long.parseLong(request.getParameter("idAlimento"));
+       // Long idAlimento = Long.parseLong(request.getParameter("idAlimento"));
         
-        Alimento alimento = (Alimento) DAO.getInstance().getObjeto(idAlimento, Class.forName("model.Alimento"));
+        //Alimento alimento = (Alimento) DAO.getInstance().getObjeto(idAlimento, Class.forName("model.Alimento"));
         
         
         

@@ -5,11 +5,15 @@
  */
 package model;
 
+import java.io.Serializable;
+import java.text.DecimalFormat;
+
+
 /**
  *
  * @author Yukas
  */
-public class Dinheiro implements Pagamento{
+public class Dinheiro implements Pagamento, Serializable{
     
     public Long id;
     
@@ -30,6 +34,16 @@ public class Dinheiro implements Pagamento{
     @Override
     public float getDesconto() {
         return 5;
+    }
+
+    @Override
+    public double calculaDesconto(double valor) {
+         valor = valor - (valor * (getDesconto()/100));
+         String valorFormatado = null;
+         valorFormatado = (new DecimalFormat("##.##").format(valor));
+         valorFormatado = valorFormatado.replace(",",".");
+         valor = Double.parseDouble(valorFormatado);
+         return valor;  
     }
     
 }

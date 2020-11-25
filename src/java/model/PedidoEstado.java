@@ -5,11 +5,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Yukas
  */
-public abstract class PedidoEstado {    
+public abstract class PedidoEstado implements Serializable {    
     protected String nome;
     protected String mensagem;
    
