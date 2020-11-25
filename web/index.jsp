@@ -37,6 +37,7 @@
         <li><a href="FrontController?action=LerCliente&operacao=abrirPagina">Editar Cliente</a> </li>
         <li><a href="FrontController?action=ApagarCliente&operacao=abrirPagina">Apagar Cliente</a> </li>
         <li><a href="FrontController?action=LerLojas&operacao=abrirPagina">Lojas Comida</a> </li>
+        <li><a href="FrontController?action=LerPedidoCliente&operacao=abrirPagina">Meus Pedidos</a> </li>
         <li><a href="FrontController?action=LogarCliente&operacao=deslogar">Deslogar Cliente</a> </li>
         <% } %>    
     
