@@ -29,6 +29,7 @@ public class Cliente extends Usuario implements Serializable, Observer {
         this.cpf = cpf;
     }
     
+    @Override
     public void update(Observable o, Object arg) {
         if (o instanceof Pedido) {
             Pedido pedido = (Pedido) o;

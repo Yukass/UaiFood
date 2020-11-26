@@ -23,6 +23,7 @@
         <li><a href="FrontController?action=GravarAlimento&operacao=abrirPagina">Cadastrar Alimento</a></li>
         <li><a href="FrontController?action=LerAlimento&operacao=abrirPagina">Pesquisar Alimento</a></li>
         <li><a href="FrontController?action=ApagarAlimento&operacao=abrirPagina">Apagar Alimento</a></li>
+        <li><a href="FrontController?action=LerPedidoLoja&operacao=abrirPagina">Ver Pedidos</a></li>
         <li><a href="FrontController?action=LogarLoja&operacao=deslogar">Deslogar Loja</a> </li>
         <% } %>
     

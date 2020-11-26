@@ -27,6 +27,7 @@ public class Pedido extends Observable implements Serializable{
     private double total;
     private PedidoEstado status;
     private Cliente cliente;
+    private Long idLoja;
     private Pagamento pagamento;
     //Mudar String por Pagamento
     private ArrayList<Item_Pedido> itensPedidos;
@@ -34,14 +35,23 @@ public class Pedido extends Observable implements Serializable{
     public Pedido() {
     }
     
-    public Pedido(double total, Cliente cliente, Pagamento pagamento, ArrayList<Item_Pedido> itensPedidos) {
+    public Pedido(double total, Cliente cliente, Pagamento pagamento, ArrayList<Item_Pedido> itensPedidos, Long idLoja) {
         this.total = total;
         this.status = new PedidoEstadoRecebido();
         this.cliente = cliente;
         this.pagamento = pagamento;
         this.itensPedidos = itensPedidos;
+        this.idLoja = idLoja;
     }
 
+     public Long getIdLoja() {
+        return idLoja;
+    }
+
+    public void setIdLoja(Long idLoja) {
+        this.idLoja = idLoja;
+    }
+    
     public Long getId() {
         return id;
     }

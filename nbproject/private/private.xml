@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/src/java/action/LerPedidoClienteAction.java</file>
-            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/web/index.jsp</file>
-            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/src/java/model/Pedido.java</file>
-            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/web/LerPedidoCliente.jsp</file>
-            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/src/java/DAO/DAO.java</file>
-            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/src/java/model/Item_Pedido.java</file>
-            <file>file:/C:/Users/braia/Documents/GitHub/UaiFood/src/java/action/CadastroPedidoAction.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

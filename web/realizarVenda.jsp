@@ -87,7 +87,7 @@
 
     <body>
         <div class="container">
-            <form action ="FrontController?action=CadastroPedido&operacao=cadastrar" method = "post">
+            <form action ="FrontController?action=CadastroPedido&operacao=cadastrar&idLoja=${id}" method = "post">
 
                 <div class="row">
                     <div class="col-sm-12 page-header">

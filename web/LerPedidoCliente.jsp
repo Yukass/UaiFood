@@ -34,6 +34,7 @@
                         <tr><td>Id Alimento: <c:out value="${item.getIdAlimento()}"/> </td>
                             <td>Quantidade: <c:out value="${item.getQuantidade()}"/></td>
                             <td>Preco Unitario: <c:out value="${item.getPrecoUnitario()}"/></td>
+                        
                         </tr>
                         </c:forEach>
                         

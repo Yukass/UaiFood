@@ -95,12 +95,16 @@ public class CadastroPedidoAction implements Action {
           Long idCliente = Long.parseLong(session.getAttribute("cliente").toString());
           
           String metodoPagamento = request.getParameter("formaPagamentoTxt");
+          String idLojaString = request.getParameter("idLoja");
+          
+          Long idLoja = Long.parseLong(idLojaString);
           
           VerificaMetodoPagamento(metodoPagamento);
           
             try {
                Cliente cliente = (Cliente) DAO.getInstance().getObjeto(idCliente, Class.forName("model.Cliente")); 
-               Pedido pedido = new Pedido(instancePagamento.calculaDesconto(valorTotal), cliente, instancePagamento, itensPedidos);    
+               Pedido pedido = new Pedido(instancePagamento.calculaDesconto(valorTotal), cliente, instancePagamento, itensPedidos, idLoja);    
+              
                DAO.getInstance().salvar(pedido);
                alimentos.clear();
                itensPedidos.clear();
