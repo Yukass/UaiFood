@@ -102,9 +102,11 @@ public class CadastroPedidoAction implements Action {
           VerificaMetodoPagamento(metodoPagamento);
           
             try {
+               
                Cliente cliente = (Cliente) DAO.getInstance().getObjeto(idCliente, Class.forName("model.Cliente")); 
                Pedido pedido = new Pedido(instancePagamento.calculaDesconto(valorTotal), cliente, instancePagamento, itensPedidos, idLoja);    
-              
+               cliente.Observar(pedido);
+               
                DAO.getInstance().salvar(pedido);
                alimentos.clear();
                itensPedidos.clear();

@@ -37,7 +37,15 @@
                         <td><a href="FrontController?action=AtualizaPedido&operacao=abrirPagina&comando=entregar&idPedido=<c:out value="${pedido.getId()}"/>">Entregue</a></td>
                         <td><a href="FrontController?action=AtualizaPedido&operacao=abrirPagina&comando=finalizar&idPedido=<c:out value="${pedido.getId()}"/>">Finalizado</a></td>
                         <td><a href="FrontController?action=AtualizaPedido&operacao=abrirPagina&comando=cancelar&idPedido=<c:out value="${pedido.getId()}"/>">Cancelado</a></td>
-                    </tr>
+                        <td><a href="FrontController?action=MementoEstadoLoja&idPedido=${pedido.getId()}&memento=retroceder"
+                        type="button" class="btn btn-secondary">
+                                <-</a></td> 
+                        <td> <a href="FrontController?action=MementoEstadoLoja&idPedido=${pedido.getId()}&memento=avancar"
+                        type="button" class="btn btn-secondary">-></a></td>
+
+                    </tr>                
+                       
+                           
                     </c:if>
                 </c:forEach>
         </table>

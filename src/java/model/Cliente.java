@@ -19,7 +19,11 @@ import javax.persistence.Entity;
 public class Cliente extends Usuario implements Serializable, Observer {
     
     private String cpf;
-       
+     
+    public void Observar(Observable pedido) {
+        pedido.addObserver(this);
+    }
+    
     public Cliente(){
     
     }
@@ -29,13 +33,21 @@ public class Cliente extends Usuario implements Serializable, Observer {
         this.cpf = cpf;
     }
     
+    
     @Override
     public void update(Observable o, Object arg) {
-        if (o instanceof Pedido) {
+        
+            if (o instanceof Pedido) {
             Pedido pedido = (Pedido) o;
-            System.out.println("Atenção " + this.getNome()
-                    + ", o seu Pedido mudou de estado para "
-                    + pedido.getStatus().getNome());
+            String msg = "Olá, " + getNome() + ", o estado do seu pedido mudou. ";
+            System.out.println(msg);
+
+            String msgEmail = "<h2 style='text-align:center; padding: 50px 20px'>Olá, " + getNome() + " </h2>";
+            msgEmail += "<h3 style='text-align:center;'>O estado do seu pedido mudou.</h3><br/>";
+            msgEmail += "<h2 style='text-align:center;'>" + pedido.getStatus().getMensagem() + "</h2>";
+            //Email email = new Email(this.getEmail(), "Status do Pedido " + pedido.getId(), msgEmail);
+           // email.enviarEmail();
+    
         }
 
     }

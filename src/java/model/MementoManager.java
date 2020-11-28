@@ -6,7 +6,7 @@
 package model;
 
 import java.util.ArrayList;
-
+import java.util.Iterator;
 /**
  *
  * @author Yukas
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class MementoManager {
 
     private ArrayList<PedidoEstado> mementos;
-    private int index;
+    public int index;
 
     public MementoManager(PedidoEstado pe) {
         mementos = new ArrayList<PedidoEstado>();

@@ -80,18 +80,7 @@ public class Pedido extends Observable implements Serializable{
     public Cliente getCliente() {
         return cliente;
     }
-
-    public Pedido setCliente(Cliente cliente) {
-        this.cliente = cliente;
-        this.addObserver(this.cliente);
-        return this;
-    }
-    
-    public Pedido setPedido(Cliente cliente) {
-        this.cliente = cliente;
-        return this;
-    }
-    
+      
     public void notificar() {
         setChanged();
         notifyObservers();

@@ -54,14 +54,24 @@ public class AtualizaPedidoAction implements Action {
         String idLoja = session.getAttribute("loja").toString();
         request.setAttribute("id", idLoja);    
         
-        MementoManager mm = new MementoManager(pedido.getStatus());
+        
+         MementoManager mm = (MementoManager) session.getAttribute("mementoManager" + idPedidoString);
+
+        if (mm == null) {
+            mm = new MementoManager(pedido.getStatus());
+            HttpSession sessionMemento = request.getSession(true);
+            sessionMemento.setAttribute("mementoManager"+idPedidoString, mm);
+        }
+        
+       
         boolean mudou = MainFactory.invocarMetodoFactory(pedido, comando);
         
          String msg;
         if (mudou) {
+            pedido.getCliente().update(pedido, pedido.getStatus().getNome());
             msg = "O pedido mudou para " + pedido.getStatus().getNome();
             mm.adicionarMemento(pedido.getStatus());
-            pedido.notificar();
+            
         } else {
             msg = "Estado do pedido " + pedido.getStatus().getNome() + " não pode ser trocado!";
         }
