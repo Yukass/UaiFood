@@ -25,14 +25,13 @@ public class Cliente extends Usuario implements Serializable, Observer {
     }
     
     public Cliente(){
-    
+        
     }
     
-    public Cliente(String nome,String cpf, String email, String senha, String telefone, String cep, String logradouro, String bairro,String numero, String complemento, String cidade, String estado) {
-        super(nome, email, senha, telefone, cep, logradouro, bairro, numero, complemento, cidade, estado);
+    public Cliente(String cpf){
         this.cpf = cpf;
-    }
     
+    }
     
     @Override
     public void update(Observable o, Object arg) {

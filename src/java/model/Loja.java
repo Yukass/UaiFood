@@ -23,11 +23,7 @@ public class Loja extends Usuario implements Serializable {
  
     public Loja(){}
     
-    public Loja(String nome, String cnpj, String email,
-            String senha, String telefone, String cep, String logradouro,
-            String bairro, String numero,String complemento, String cidade, String estado) {
-        super(nome, email, senha, telefone, cep, logradouro, bairro, numero, complemento, cidade, estado);
-
+    public Loja(String cnpj){
         this.cnpj = cnpj;
     }
     
@@ -39,8 +35,9 @@ public class Loja extends Usuario implements Serializable {
         return cnpj;
     }
 
-    public void setCnpj(String cnpj) {
+    public Loja setCnpj(String cnpj) {
         this.cnpj = cnpj;
+        return this;
     }
 
 }
