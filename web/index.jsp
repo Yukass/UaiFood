@@ -21,6 +21,7 @@
         <li><a href="FrontController?action=LerLoja&operacao=abrirPagina">Editar Loja</a> </li>
         <li><a href="FrontController?action=ApagarLoja&operacao=abrirPagina">Apagar Loja</a> </li> 
         <li><a href="FrontController?action=GravarAlimento&operacao=abrirPagina">Cadastrar Alimento</a></li>
+        <li><a href="FrontController?action=CadastroCombo&operacao=abrirPagina">Cadastrar Combo</a></li>
         <li><a href="FrontController?action=LerAlimento&operacao=abrirPagina">Pesquisar Alimento</a></li>
         <li><a href="FrontController?action=ApagarAlimento&operacao=abrirPagina">Apagar Alimento</a></li>
         <li><a href="FrontController?action=LerPedidoLoja&operacao=abrirPagina">Ver Pedidos</a></li>

@@ -66,7 +66,7 @@ public class CadastroPedidoAction implements Action {
               
         int incrementoInt;
         String incrementoString;
-        for (int i = 0; i < 4; i++) 
+        for (int i = 0; i < 20; i++) 
         {
             incrementoInt = i;
             incrementoString = Integer.toString(incrementoInt);
@@ -83,13 +83,14 @@ public class CadastroPedidoAction implements Action {
             Long idItemPedido = Long.parseLong(textoSeparado[0]);
             Integer quantidadeItemPedido = Integer.parseInt(textoSeparado[1]);
             Double valorUnitarioItemPedido = Double.parseDouble(textoSeparado[2]);
-            Item_Pedido item = new Item_Pedido(idItemPedido, quantidadeItemPedido, valorUnitarioItemPedido);
+            String nomeItemPedido = textoSeparado[3];
+            Item_Pedido item = new Item_Pedido(idItemPedido, quantidadeItemPedido, valorUnitarioItemPedido, nomeItemPedido);
             itensPedidos.add(item);
         }
           
         
           String[] valorTotalString = alimentos.get(alimentos.size() - 1).split(",");
-          double valorTotal = Double.parseDouble(valorTotalString[3]);
+          double valorTotal = Double.parseDouble(valorTotalString[4]);
           
           HttpSession session = request.getSession();
           Long idCliente = Long.parseLong(session.getAttribute("cliente").toString());

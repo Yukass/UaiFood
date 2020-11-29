@@ -31,7 +31,7 @@
                         <td><c:out value="${pedido.total}"/></td>
                         <td><c:out value="${pedido.status.nome}"/></td>
                         <c:forEach items="${pedido.getItensPedidos()}" var="item">
-                        <tr><td>Id Alimento: <c:out value="${item.getIdAlimento()}"/> </td>
+                        <tr><td>Nome Alimento: <c:out value="${item.getNomeAlimento()}"/> </td>
                             <td>Quantidade: <c:out value="${item.getQuantidade()}"/></td>
                             <td>Preco Unitario: <c:out value="${item.getPrecoUnitario()}"/></td>
                         

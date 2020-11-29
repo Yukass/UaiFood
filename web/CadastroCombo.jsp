@@ -37,7 +37,7 @@
                         var opcao = $("#alimento").find("option:selected");
                         valorTotal = valorTotal + (opcao.data('preco') * $("#quantidade").val());
                         
-                        var info = $("#alimento").val() + "," + $("#quantidade").val() + "," + opcao.data('preco') + "," + opcao.data('nome') + ","+valorTotal;
+                        var info = $("#alimento").val() + "," + $("#quantidade").val() + "," + opcao.data('preco') + "," + opcao.data('nome');
                      
                         var txtValor = "txtIdAlimento" + i.toString();
                          
@@ -50,60 +50,10 @@
                         linha.append(colunas);
                         $("#tabela").append(linha);
                         $("#quantidade").val(null);
-                        $("#valorTotal").text(valorTotal.toFixed(2));
-                        
+                        $("#valorTotal").text(valorTotal);
                     
                     }
                 };
-                
-                    adicionarCombo = function () {
-          
-                      var idCombo = $("#combo").val();
-                      
-                      var listaAlimentos;
-                      
-                      fetch('FrontController?action=LerAlimentosLoja&operacao=getCombo&idCombo='+idCombo)
-                        .then(response => response.json())
-                        .then((data) => {
-                            listaAlimentos = data.alimento;
-                            debugger;
-                     if(listaAlimentos !== null){
-                         
-                        listaAlimentos.forEach(function(alimento){
-                        i++;
-                        
-                        var valorTotal = parseFloat($("#valorTotal").text());
-                        var linha = $("<tr>");
-                        var colunas = "";
-                        
-                        
-                        valorTotal = valorTotal + (alimento.quantidade * alimento.precoUnitario);
-                        
-                        var info = alimento.idAlimento + "," + alimento.quantidade + "," + alimento.precoUnitario + ","  + alimento.nomeAlimento + "," + valorTotal;
-                     
-                        var txtValor = "txtIdAlimento" + i.toString();
-                         
-                        colunas += '<td style="visibility:hidden;"><input type="text" name=' + txtValor + ' value=' + info + '>' + alimento.idAlimento + '</td>';
-                        colunas += '<td>' + alimento.nomeAlimento + '</td>';
-                        colunas += '<td data-quantidade=' + alimento.quantidade + '>' + alimento.quantidade + '</td>';
-                        colunas += '<td data-preco=' + alimento.precoUnitario + '>' + alimento.precoUnitario + '</td>';
-                        colunas += '<td><button type="button" class="btn btn-danger btn-xs" onclick="remover(this)">Excluir <span class="glyphicon glyphicon-trash"></span></button></td>';
-                        colunas += '</tr>';
-                        linha.append(colunas);
-                        $("#tabela").append(linha);
-                        $("#quantidade").val(null);
-                        $("#valorTotal").text(valorTotal.toFixed(2));
-                      
-                        }); 
-                    }
-                });
-                      
-                      
-                      
-                      
-                     
-               
-            };
 
                 remover = function (item) {
                     var valorTotal = parseFloat($("#valorTotal").text());
@@ -112,7 +62,7 @@
                     var quantidade = tr.find('td[data-quantidade]').data('quantidade');
                     var preco = tr.find('td[data-preco]').data('preco');
                     valorTotal = valorTotal - (quantidade * preco);
-                    $("#valorTotal").text(valorTotal.toFixed(2));
+                    $("#valorTotal").text(valorTotal);
                     tr.remove();
                 }
 
@@ -137,25 +87,17 @@
 
     <body>
         <div class="container">
-            <form action ="FrontController?action=CadastroPedido&operacao=cadastrar&idLoja=${id}" method = "post">
+            <form action ="FrontController?action=CadastroCombo&operacao=cadastrar&idLoja=${id}" method = "post">
 
                 <div class="row">
                     <div class="col-sm-12 page-header">
-                        <h1 class="header">Realizar Compra</h1>
+                        <h1 class="header">Combo</h1>
+                        <h1>Nome*:</h1>
+                        <input class="form-control" pattern="^[A-Za-z].{3,10}$" required type="text" name="txtNomeCombo" >
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="loja">Loja</label>
-                            <select class="form-control" id="loja" name="loja">
-                                <c:forEach items="${lojas}" var="umLoja">
-                                    <c:if test="${id == umLoja.getId()}">
-                                    <option value="${umLoja.getId()}">${umLoja.nome}</option>  
-                                    </c:if>
-                                </c:forEach>
-                            </select>
-                        </div>
                         <div class="form-group">
                             <label for="alimento">Alimento</label>
                             <select class="form-control" id="alimento" name="alimento">
@@ -166,33 +108,15 @@
                                             data-preco="${umAlimento.preco}">${umAlimento.nome}</option> 
                                     </c:if>
                                 </c:forEach>
-                               
                             </select>
                         </div>
-                        
                         <div class="form-group">
                             <label for="quantidade">Quantidade</label>
-                            <input type="number" id="quantidade" name="quantidade" class="form-control"><br><br>
+                            <input type="number" id="quantidade" name="quantidade" class="form-control" value="1"><br><br>
                         </div>
                         <button onclick="adicionar()" type="button" class="btn btn-primary">Adicionar Item</button>
                         <br><br>
-                        
-                        
-                       <div class="form-group">
-                            <label for="combo">Combo</label>
-                            <select class="form-control" id="combo" name="combo">
-                                <c:forEach items="${combos}" var="umCombo">
-                                    <c:if test="${id == umCombo.getIdLoja()}">
-                                    <option value="${umCombo.getId()}" 
-                                                >${umCombo.nome}</option> 
-                                    </c:if>
-                                </c:forEach>
-                            </select>
-                        </div>
-                        
-                        <button onclick="adicionarCombo()" type="button" class="btn btn-primary">Adicionar Combo</button>
-                        <br><br>
-                         
+                       
                     </div>
                     <div class="col-sm-6">
                         <div class="row">
@@ -215,13 +139,7 @@
                     </div>
                 </div>
                  <center>
-                            <input type="radio" id="dinheiro" name="formaPagamentoTxt" value="Dinheiro" checked>
-                            <label for="dinheiro">Dinheiro</label>
-                            <input type="radio" id="debito" name="formaPagamentoTxt" value="Debito">
-                            <label for="debito">Debito</label>
-                            <input type="radio" id="ticket" name="formaPagamentoTxt" value="Ticket">
-                            <label for="ticket">Ticket</label>
-                            <button type="submit" class="btn btn-success">Finalizar Venda</button>
+                            <button type="submit" class="btn btn-success">Finalizar Combo</button>
                         </center>
             </form>
         </div>

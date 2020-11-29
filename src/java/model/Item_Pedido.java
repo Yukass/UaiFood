@@ -21,14 +21,24 @@ public class Item_Pedido implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String nomeAlimento;
     private Long idAlimento;
     private Integer quantidade;
     private double precoUnitario;
 
-    public Item_Pedido(Long idAlimento, Integer quantidade, double precoUnitario) {
+    public Item_Pedido(Long idAlimento, Integer quantidade, double precoUnitario, String nomeAlimento) {
         this.idAlimento = idAlimento;
         this.quantidade = quantidade;
         this.precoUnitario = precoUnitario;
+        this.nomeAlimento = nomeAlimento;
+    }
+
+    public String getNomeAlimento() {
+        return nomeAlimento;
+    }
+
+    public void setNomeAlimento(String nomeAlimento) {
+        this.nomeAlimento = nomeAlimento;
     }
 
     public Long getId() {
