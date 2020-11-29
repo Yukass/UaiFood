@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Controle Vendas</title>
+        <title>Uai Food</title>
 
         <!-- Bootstrap -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,99 +25,76 @@
         <script>
             $(document).ready(function () {
 
-                var i = -1;
-                adicionar = function () {
+            var i = - 1;
+                    adicionar = function () {
 
                     if ($("#quantidade").val() !== 0) {
-                      
-                        i++;
-                        var valorTotal = parseFloat($("#valorTotal").text());
-                        var linha = $("<tr>");
-                        var colunas = "";
-                        var opcao = $("#alimento").find("option:selected");
-                        valorTotal = valorTotal + (opcao.data('preco') * $("#quantidade").val());
-                        
-                        var info = $("#alimento").val() + "," + $("#quantidade").val() + "," + opcao.data('preco') + "," + opcao.data('nome') + ","+valorTotal;
-                     
-                        var txtValor = "txtIdAlimento" + i.toString();
-                         
-                        colunas += '<td style="visibility:hidden;"><input type="text" name=' + txtValor + ' value=' + info + '>' + $("#alimento").val() + '</td>';
-                        colunas += '<td>' + opcao.data('nome') + '</td>';
-                        colunas += '<td data-quantidade=' + $("#quantidade").val() + '>' + $("#quantidade").val() + '</td>';
-                        colunas += '<td data-preco=' + opcao.data('preco') + '>' + opcao.data('preco') + '</td>';
-                        colunas += '<td><button type="button" class="btn btn-danger btn-xs" onclick="remover(this)">Excluir <span class="glyphicon glyphicon-trash"></span></button></td>';
-                        colunas += '</tr>';
-                        linha.append(colunas);
-                        $("#tabela").append(linha);
-                        $("#quantidade").val(null);
-                        $("#valorTotal").text(valorTotal.toFixed(2));
-                        
-                    
+
+                    i++;
+                            var valorTotal = parseFloat($("#valorTotal").text());
+                            var linha = $("<tr>");
+                            var colunas = "";
+                            var opcao = $("#alimento").find("option:selected");
+                            valorTotal = valorTotal + (opcao.data('preco') * $("#quantidade").val());
+                            var info = $("#alimento").val() + "," + $("#quantidade").val() + "," + opcao.data('preco') + "," + opcao.data('nome') + "," + valorTotal;
+                            var txtValor = "txtIdAlimento" + i.toString();
+                            colunas += '<td style="visibility:hidden;"><input type="text" name=' + txtValor + ' value=' + info + '>' + $("#alimento").val() + '</td>';
+                            colunas += '<td>' + opcao.data('nome') + '</td>';
+                            colunas += '<td data-quantidade=' + $("#quantidade").val() + '>' + $("#quantidade").val() + '</td>';
+                            colunas += '<td data-preco=' + opcao.data('preco') + '>' + opcao.data('preco') + '</td>';
+                            colunas += '<td><button type="button" class="btn btn-danger btn-xs" onclick="remover(this)">Excluir <span class="glyphicon glyphicon-trash"></span></button></td>';
+                            colunas += '</tr>';
+                            linha.append(colunas);
+                            $("#tabela").append(linha);
+                            $("#quantidade").val(null);
+                            $("#valorTotal").text(valorTotal.toFixed(2));
                     }
-                };
-                
+                    };
                     adicionarCombo = function () {
-          
-                      var idCombo = $("#combo").val();
-                      
-                      var listaAlimentos;
-                      
-                      fetch('FrontController?action=LerAlimentosLoja&operacao=getCombo&idCombo='+idCombo)
-                        .then(response => response.json())
-                        .then((data) => {
+
+                    var idCombo = $("#combo").val();
+                            var listaAlimentos;
+                            fetch('FrontController?action=LerAlimentosLoja&operacao=getCombo&idCombo=' + idCombo)
+                            .then(response = > response.json())
+                            .then((data) = > {
                             listaAlimentos = data.alimento;
-                            debugger;
-                     if(listaAlimentos !== null){
-                         
-                        listaAlimentos.forEach(function(alimento){
-                        i++;
-                        
-                        var valorTotal = parseFloat($("#valorTotal").text());
-                        var linha = $("<tr>");
-                        var colunas = "";
-                        
-                        
-                        valorTotal = valorTotal + (alimento.quantidade * alimento.precoUnitario);
-                        
-                        var info = alimento.idAlimento + "," + alimento.quantidade + "," + alimento.precoUnitario + ","  + alimento.nomeAlimento + "," + valorTotal;
-                     
-                        var txtValor = "txtIdAlimento" + i.toString();
-                         
-                        colunas += '<td style="visibility:hidden;"><input type="text" name=' + txtValor + ' value=' + info + '>' + alimento.idAlimento + '</td>';
-                        colunas += '<td>' + alimento.nomeAlimento + '</td>';
-                        colunas += '<td data-quantidade=' + alimento.quantidade + '>' + alimento.quantidade + '</td>';
-                        colunas += '<td data-preco=' + alimento.precoUnitario + '>' + alimento.precoUnitario + '</td>';
-                        colunas += '<td><button type="button" class="btn btn-danger btn-xs" onclick="remover(this)">Excluir <span class="glyphicon glyphicon-trash"></span></button></td>';
-                        colunas += '</tr>';
-                        linha.append(colunas);
-                        $("#tabela").append(linha);
-                        $("#quantidade").val(null);
-                        $("#valorTotal").text(valorTotal.toFixed(2));
-                      
-                        }); 
-                    }
-                });
-                      
-                      
-                      
-                      
-                     
-               
-            };
+                                    debugger;
+                                    if (listaAlimentos !== null){
 
-                remover = function (item) {
+                            listaAlimentos.forEach(function(alimento){
+                            i++;
+                                    var valorTotal = parseFloat($("#valorTotal").text());
+                                    var linha = $("<tr>");
+                                    var colunas = "";
+                                    valorTotal = valorTotal + (alimento.quantidade * alimento.precoUnitario);
+                                    var info = alimento.idAlimento + "," + alimento.quantidade + "," + alimento.precoUnitario + "," + alimento.nomeAlimento + "," + valorTotal;
+                                    var txtValor = "txtIdAlimento" + i.toString();
+                                    colunas += '<td style="visibility:hidden;"><input type="text" name=' + txtValor + ' value=' + info + '>' + alimento.idAlimento + '</td>';
+                                    colunas += '<td>' + alimento.nomeAlimento + '</td>';
+                                    colunas += '<td data-quantidade=' + alimento.quantidade + '>' + alimento.quantidade + '</td>';
+                                    colunas += '<td data-preco=' + alimento.precoUnitario + '>' + alimento.precoUnitario + '</td>';
+                                    colunas += '<td><button type="button" class="btn btn-danger btn-xs" onclick="remover(this)">Excluir <span class="glyphicon glyphicon-trash"></span></button></td>';
+                                    colunas += '</tr>';
+                                    linha.append(colunas);
+                                    $("#tabela").append(linha);
+                                    $("#quantidade").val(null);
+                                    $("#valorTotal").text(valorTotal.toFixed(2));
+                            });
+                            }
+                            });
+                    };
+                    remover = function (item) {
                     var valorTotal = parseFloat($("#valorTotal").text());
+                            var tr = $(item).closest('tr');
+                            var quantidade = tr.find('td[data-quantidade]').data('quantidade');
+                            var preco = tr.find('td[data-preco]').data('preco');
+                            valorTotal = valorTotal - (quantidade * preco);
+                            $("#valorTotal").text(valorTotal.toFixed(2));
+                            tr.remove();
+                    }
 
-                    var tr = $(item).closest('tr');
-                    var quantidade = tr.find('td[data-quantidade]').data('quantidade');
-                    var preco = tr.find('td[data-preco]').data('preco');
-                    valorTotal = valorTotal - (quantidade * preco);
-                    $("#valorTotal").text(valorTotal.toFixed(2));
-                    tr.remove();
-                }
-
-                $("#loja").change(function () {
-                    $("#tabela tr").remove();
+            $("#loja").change(function () {
+            $("#tabela tr").remove();
                     var linha = $("<tr>");
                     var colunas = "";
                     colunas += '<td style="visibility:hidden;">Código</td>';
@@ -129,19 +106,24 @@
                     linha.append(colunas);
                     $("#tabela").append(linha);
                     $("#valorTotal").text(0);
-                });
             });
-        </script>
+            });</script>
+        <script>
+                    $(function () {
+                    $("#header").load("Header.jsp");
+                            $("#UploadImagem").load("UploadImagem.jsp");
+                    });        </script>
 
     </head>
 
     <body>
+        <div id="header"></div>
         <div class="container">
             <form action ="FrontController?action=CadastroPedido&operacao=cadastrar&idLoja=${id}" method = "post">
 
                 <div class="row">
                     <div class="col-sm-12 page-header">
-                        <h1 class="header">Realizar Compra</h1>
+                        <h1>Realizar Compra</h1>
                     </div>
                 </div>
                 <div class="row">
@@ -151,7 +133,7 @@
                             <select class="form-control" id="loja" name="loja">
                                 <c:forEach items="${lojas}" var="umLoja">
                                     <c:if test="${id == umLoja.getId()}">
-                                    <option value="${umLoja.getId()}">${umLoja.nome}</option>  
+                                        <option value="${umLoja.getId()}">${umLoja.nome}</option>  
                                     </c:if>
                                 </c:forEach>
                             </select>
@@ -161,38 +143,38 @@
                             <select class="form-control" id="alimento" name="alimento">
                                 <c:forEach items="${alimentos}" var="umAlimento">
                                     <c:if test="${id == umAlimento.idLoja}">
-                                    <option value="${umAlimento.getId()}" 
-                                            data-nome="${umAlimento.nome}"
-                                            data-preco="${umAlimento.preco}">${umAlimento.nome}</option> 
+                                        <option value="${umAlimento.getId()}" 
+                                                data-nome="${umAlimento.nome}"
+                                                data-preco="${umAlimento.preco}">${umAlimento.nome}</option> 
                                     </c:if>
                                 </c:forEach>
-                               
+
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="quantidade">Quantidade</label>
                             <input type="number" id="quantidade" name="quantidade" class="form-control"><br><br>
                         </div>
                         <button onclick="adicionar()" type="button" class="btn btn-primary">Adicionar Item</button>
                         <br><br>
-                        
-                        
-                       <div class="form-group">
+
+
+                        <div class="form-group">
                             <label for="combo">Combo</label>
                             <select class="form-control" id="combo" name="combo">
                                 <c:forEach items="${combos}" var="umCombo">
                                     <c:if test="${id == umCombo.getIdLoja()}">
-                                    <option value="${umCombo.getId()}" 
+                                        <option value="${umCombo.getId()}" 
                                                 >${umCombo.nome}</option> 
                                     </c:if>
                                 </c:forEach>
                             </select>
                         </div>
-                        
+
                         <button onclick="adicionarCombo()" type="button" class="btn btn-primary">Adicionar Combo</button>
                         <br><br>
-                         
+
                     </div>
                     <div class="col-sm-6">
                         <div class="row">
@@ -214,15 +196,15 @@
                         </div>
                     </div>
                 </div>
-                 <center>
-                            <input type="radio" id="dinheiro" name="formaPagamentoTxt" value="Dinheiro" checked>
-                            <label for="dinheiro">Dinheiro</label>
-                            <input type="radio" id="debito" name="formaPagamentoTxt" value="Debito">
-                            <label for="debito">Debito</label>
-                            <input type="radio" id="ticket" name="formaPagamentoTxt" value="Ticket">
-                            <label for="ticket">Ticket</label>
-                            <button type="submit" class="btn btn-success">Finalizar Venda</button>
-                        </center>
+                <center>
+                    <input type="radio" id="dinheiro" name="formaPagamentoTxt" value="Dinheiro" checked>
+                    <label for="dinheiro">Dinheiro</label>
+                    <input type="radio" id="debito" name="formaPagamentoTxt" value="Debito">
+                    <label for="debito">Debito</label>
+                    <input type="radio" id="ticket" name="formaPagamentoTxt" value="Ticket">
+                    <label for="ticket">Ticket</label>
+                    <button type="submit" class="btn btn-success">Finalizar Venda</button>
+                </center>
             </form>
         </div>
     </body>

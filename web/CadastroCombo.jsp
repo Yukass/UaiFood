@@ -82,17 +82,25 @@
                 });
             });
         </script>
+         <script>
+            $(function () {
+                $("#header").load("Header.jsp");
+                $("#UploadImagem").load("UploadImagem.jsp");
+            });
+        </script>
 
     </head>
 
     <body>
+        <div id="header"></div>
         <div class="container">
             <form action ="FrontController?action=CadastroCombo&operacao=cadastrar&idLoja=${id}" method = "post">
 
                 <div class="row">
-                    <div class="col-sm-12 page-header">
-                        <h1 class="header">Combo</h1>
-                        <h1>Nome*:</h1>
+                    <div class="col-sm-6 page-header">
+                        <h1>Cadastrar Combo</h1>
+                        <br/>
+                        <label for="alimento">Nome*:</label>
                         <input class="form-control" pattern="^[A-Za-z].{3,10}$" required type="text" name="txtNomeCombo" >
                     </div>
                 </div>

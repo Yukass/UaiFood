@@ -65,12 +65,12 @@
     </head>
     <body>
         <div id="header"></div>
-        <div class="container">
+        <div class="container text-center">
             <div class="special-offers-section-head text-center dotted-line"> <div class="special-offers-section" > <h1>Logar Cliente</h1></br> </div></div>
 
             <form action ="FrontController?action=LogarCliente&operacao=logar" method = "post">
 
-                <table>
+                <table style="margin:auto">
                     <tr>
                         <td>Email:</td>
                         <td><input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,25}$" required onBlur="confereEmail()" name="txtEmailCliente"></td>    
@@ -81,6 +81,7 @@
                     </tr>
                     <tr>
                 </table>
+                <br/><br/><br/>
                 <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
             </form>
         </div>

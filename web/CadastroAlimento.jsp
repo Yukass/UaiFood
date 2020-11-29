@@ -10,28 +10,77 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro Alimento</title>
+        <<title>Uai Food</title>
+
+        <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery.min.js"></script>
+        <!-- Custom Theme files -->
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <!-- Custom Theme files -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!--webfont-->
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <!--Animation-->
+        <script src="js/wow.min.js"></script>
+        <link href="css/animate.css" rel='stylesheet' type='text/css' />
+        <script>
+            new WOW().init();
+        </script>
+        <script type="text/javascript" src="js/move-top.js"></script>
+        <script type="text/javascript" src="js/easing.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $(".scroll").click(function (event) {
+                    event.preventDefault();
+                    $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+                });
+            });
+        </script>
+        <script src="js/simpleCart.min.js"></script>	
+
+        <script src="jquery-3.2.1.min.js"></script>
+        <script>
+            $(function () {
+                $("#header").load("Header.jsp");
+                $("#UploadImagem").load("UploadImagem.jsp");
+            });
+        </script>
     </head>
     <body>
-             <h1>Cadrasto Alimento</h1>
-         <form action ="FrontController?action=GravarAlimento&operacao=cadastrar" method = "post">
-            <table>
-            <tr>
-                <td>NOME*:</td>
-                <td><input pattern="^[A-Za-z].{3,45}$" required type="text" name="txtNomeAlimento" value="${alimento.nome}" ></td>
-            </tr>
-            <tr>
-                <td>PREÇO*:</td>
-                <td><input pattern='[0-9]+(\\.[0-9][0-9]?)?' title="XX,XX" required type="number" name="txtPrecoAlimento" value="${alimento.preco}" ></td>
-            </tr>
-             <tr>
-                <td>DESCRIÇÃO*:</td>
-                <td><input  pattern="[a-zA-Z].{5,45}$" required  type="text" name="txtDescricaoAlimento" value="${alimento.descricao}" ></td>
-            </tr> 
-            
-            </table>
-                        <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
-              </form>
-            
+        <div id="header"></div>
+
+        <div class="content">
+            <div class="main">
+                <div class="container">
+                    <div class="register text-center">
+                        <div class="special-offers-section-head text-center dotted-line"> <div class="special-offers-section" > <h1>Cadastrar Alimento</h1></br> </div></div>
+                        <form action ="FrontController?action=GravarAlimento&operacao=cadastrar" method = "post">
+                            <table style="margin:auto"> 
+                                <tr>
+                                    <td>NOME*:</td>
+                                    <td><input pattern="^[A-Za-z].{3,45}$" required type="text" name="txtNomeAlimento" value="${alimento.nome}" ></td>
+                                </tr>
+                                <tr>
+                                    <td>PREÇO*:</td>
+                                    <td><input pattern='[0-9]+(\\.[0-9][0-9]?)?' title="XX,XX" required type="number" name="txtPrecoAlimento" value="${alimento.preco}" ></td>
+                                </tr>
+                                <tr>
+                                    <td>DESCRIÇÃO*:</td>
+                                    <td><input  pattern="[a-zA-Z].{5,45}$" required  type="text" name="txtDescricaoAlimento" value="${alimento.descricao}" ></td>
+                                </tr> 
+
+                            </table>
+                                <br/><br/><br/>
+                            <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </body>
 </html>

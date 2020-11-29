@@ -114,12 +114,12 @@
         <div class="content">
             <div class="main">
                 <div class="container">
-                    <div class="register">
+                    <div class="register text-center">
 
                         <div class="special-offers-section-head text-center dotted-line"> <div class="special-offers-section" > <h1>Cadastrar Loja</h1></br> </div></div>
 
                         <form action ="FrontController?action=GravarLoja&operacao=cadastrar" method = "post" name="ManterLoja" onsubmit=" return validacaoLoja()">
-                            <table>
+                            <table style="margin:auto">
                                 <tr>
 
                                     <td><input type="hidden" name="txtIdLoja" value="${loja.id}" ></td>
@@ -175,6 +175,7 @@
                                 </tr>
 
                             </table>
+                                <br/><br/><br/>
                             <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                         </form>
                     </div>

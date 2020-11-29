@@ -66,11 +66,11 @@
     </head>
     <body>
         <div id="header"></div>
-        <div class="container">
+        <div class="container text-center">
             <div class="special-offers-section-head text-center dotted-line"> <div class="special-offers-section" > <h1>Logar Loja</h1></br> </div></div>
 
             <form action ="FrontController?action=LogarLoja&operacao=logar" method = "post">
-                <table>
+                <table style="margin:auto">
                     <tr>
                         <td>Email:</td>
                         <td><input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,25}$" required onBlur="confereEmail()" name= "txtEmailLoja"></td>
@@ -80,6 +80,7 @@
                         <td><input pattern=".{6,25}$" required type="password" name="txtSenhaLoja"></td>
                     </tr>
                 </table>
+                <br/><br/><br/>
                 <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
             </form>
         </div>
