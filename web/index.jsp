@@ -1,48 +1,67 @@
 <%-- 
-    Document   : newjspindex
-    Created on : 01/11/2020, 22:39:33
-    Author     : Yukas
+    Document   : LoginCliente
+    Created on : 14/11/2018, 14:22:37
+    Author     : rodri
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Index</title>
+        <title>NyahFood</title>
+        <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery.min.js"></script>
+        <!-- Custom Theme files -->
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <!-- Custom Theme files -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!--webfont-->
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <!--Animation-->
+        <script src="js/wow.min.js"></script>
+        <link href="css/animate.css" rel='stylesheet' type='text/css' />
+        <script>
+            new WOW().init();
+        </script>
+        <script src="js/simpleCart.min.js"></script>	
+        <script type="text/javascript" src="js/move-top.js"></script>
+        <script type="text/javascript" src="js/easing.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $(".scroll").click(function (event) {
+                    event.preventDefault();
+                    $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+                });
+            });
+        </script>
+        <script src="jquery-3.2.1.min.js"></script>
+        <script>
+            $(function () {
+                $("#header").load("Header.jsp");
+
+            });
+        </script>
     </head>
     <body>
-        <% if (session.getAttribute("loja") == null) { %>
-            <% if (session.getAttribute("cliente") == null) { %>
-            <li><a href="FrontController?action=LogarLoja&operacao=abrirPagina">Logar Loja</a> </li>
-            <li><a href="FrontController?action=GravarLoja&operacao=abrirPagina">Registrar Loja</a> </li>
-             <% } %>
-        <% } else {%>
-        <li><a href="FrontController?action=LerLoja&operacao=abrirPagina">Editar Loja</a> </li>
-        <li><a href="FrontController?action=ApagarLoja&operacao=abrirPagina">Apagar Loja</a> </li> 
-        <li><a href="FrontController?action=GravarAlimento&operacao=abrirPagina">Cadastrar Alimento</a></li>
-        <li><a href="FrontController?action=CadastroCombo&operacao=abrirPagina">Cadastrar Combo</a></li>
-        <li><a href="FrontController?action=LerAlimento&operacao=abrirPagina">Pesquisar Alimento</a></li>
-        <li><a href="FrontController?action=ApagarAlimento&operacao=abrirPagina">Apagar Alimento</a></li>
-        <li><a href="FrontController?action=LerPedidoLoja&operacao=abrirPagina">Ver Pedidos</a></li>
-        <li><a href="FrontController?action=LogarLoja&operacao=deslogar">Deslogar Loja</a> </li>
-        <% } %>
-    
+        <!-- header-section-starts -->
+        <div id ="header"><div>
+                <!-- content-section-ends -->
+                <!-- footer-section-starts -->
+                <div class="footer">
+                    <div class="container">
+                        <p class="wow fadeInLeft" data-wow-delay="0.4s">&copy; 2018 Uai Food</p>
+                    </div>
+                </div>
+                <!-- footer-section-ends -->
 
-        <br/>
-        <% if (session.getAttribute("cliente") == null) { %>
-            <% if (session.getAttribute("loja") == null) { %>
-            <li><a href="FrontController?action=LogarCliente&operacao=abrirPagina">Logar Cliente</a> </li>
-            <li><a href="FrontController?action=GravarCliente&operacao=abrirPagina">Registrar Cliente</a> </li>
-             <% } %>
-        <% } else {%>
-        <li><a href="FrontController?action=LerCliente&operacao=abrirPagina">Editar Cliente</a> </li>
-        <li><a href="FrontController?action=ApagarCliente&operacao=abrirPagina">Apagar Cliente</a> </li>
-        <li><a href="FrontController?action=LerLojas&operacao=abrirPagina">Lojas Comida</a> </li>
-        <li><a href="FrontController?action=LerPedidoCliente&operacao=abrirPagina">Meus Pedidos</a> </li>
-        <li><a href="FrontController?action=LogarCliente&operacao=deslogar">Deslogar Cliente</a> </li>
-        <% } %>    
-    
+                <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
-</body>
-</html>
+                </body>
+                </html>
